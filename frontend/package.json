@@ -10,6 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@progress/kendo-react-animation": "^10.0.0",
+    "@progress/kendo-react-buttons": "^10.0.0",
+    "@progress/kendo-react-common": "^10.0.0",
+    "@progress/kendo-react-indicators": "^10.0.0",
+    "@progress/kendo-react-inputs": "^10.0.0",
+    "@progress/kendo-react-labels": "^10.0.0",
+    "@progress/kendo-react-layout": "^10.0.0",
+    "@progress/kendo-react-notification": "^10.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
