@@ -11,9 +11,9 @@ const IntervalPlayer = () => {
   );
   const filePath = `/src/assets/intervals/${intervalName}-${intervalDirection}.wav`;
   return (
-    <>
+    <section className="interval-player">
       <audio controls src={filePath}></audio>
-    </>
+    </section>
   );
 };
 

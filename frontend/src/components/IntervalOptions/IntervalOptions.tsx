@@ -7,6 +7,7 @@ import {
 import { Checkbox } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 import { Button } from "@progress/kendo-react-buttons";
+
 interface IntervalOptionsErrorInterface {
   intervalError?: string;
   directionError?: string;
@@ -63,7 +64,7 @@ const IntervalOptions = () => {
   };
 
   return (
-    <>
+    <section className="customize-intervals-section">
       <form onSubmit={handleSubmit}>
         <fieldset>
           {intervalOptionsError.intervalError && (
@@ -319,6 +320,7 @@ const IntervalOptions = () => {
               defaultChecked={true}
             />
           </Label>
+
           <Label>
             Composite
             <Checkbox
@@ -337,7 +339,7 @@ const IntervalOptions = () => {
         </fieldset>
         <Button>Apply Changes</Button>
       </form>
-    </>
+    </section>
   );
 };
 

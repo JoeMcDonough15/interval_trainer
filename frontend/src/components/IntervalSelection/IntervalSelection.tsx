@@ -105,7 +105,7 @@ const IntervalSelection = () => {
   };
 
   return (
-    <>
+    <section className="user-selection-section">
       <form onSubmit={handleSubmit}>
         <fieldset>
           {userSubmissionError && (
@@ -297,7 +297,7 @@ const IntervalSelection = () => {
           )}
         </Fade>
       </NotificationGroup>
-    </>
+    </section>
   );
 };
 
