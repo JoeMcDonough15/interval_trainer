@@ -29,7 +29,7 @@ interface AvailableIntervalsInterface {
   setAvailableDirections: ({}: DirectionsInterface) => void;
 }
 
-const AvailableIntervalsContext = createContext(
+export const AvailableIntervalsContext = createContext(
   {} as AvailableIntervalsInterface
 );
 
