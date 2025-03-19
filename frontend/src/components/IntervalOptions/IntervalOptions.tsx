@@ -54,9 +54,11 @@ const IntervalOptions = () => {
       return;
     }
 
-    // if no errors, update the state of the availableIntervals and availableDirections
     setIntervalOptionsError({});
 
+    // if no errors, update the state of the availableIntervals and availableDirections
+    setAvailableIntervals(intervals);
+    setAvailableDirections(directions);
     return;
   };
 
