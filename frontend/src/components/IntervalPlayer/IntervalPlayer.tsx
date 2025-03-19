@@ -9,15 +9,12 @@ const IntervalPlayer = () => {
   const { intervalName, intervalDirection } = useContext(
     SelectedIntervalContext
   );
-  console.log(
-    "currently selected interval inside IntervalPlayer: ",
-    intervalName
+  const filePath = `/src/assets/intervals/${intervalName}-${intervalDirection}.wav`;
+  return (
+    <>
+      <audio controls src={filePath}></audio>
+    </>
   );
-  console.log(
-    "currently selected direction inside IntervalPlayer: ",
-    intervalDirection
-  );
-  return <></>;
 };
 
 export default IntervalPlayer;

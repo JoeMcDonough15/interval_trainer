@@ -74,10 +74,14 @@ const IntervalOptions = () => {
             {" "}
             Perfect Unison
             <Checkbox
+              value="Unison"
               onChange={(e) => {
                 e.target.element?.checked
                   ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Unison: true };
+                      return {
+                        ...prevIntervals,
+                        Unison: true,
+                      };
                     })
                   : setIntervals((prevIntervals) => {
                       return { ...prevIntervals, Unison: false };
