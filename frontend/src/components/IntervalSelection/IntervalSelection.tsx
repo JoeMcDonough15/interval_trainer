@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import {
   AvailableIntervalsContext,
   IntervalsInterface,
@@ -6,6 +6,9 @@ import {
 } from "../../context/AvailableIntervals";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { UserStatsContext } from "../../context/UserStats";
+import { FloatingActionButton } from "@progress/kendo-react-buttons";
+import { RadioButton } from "@progress/kendo-react-inputs";
+import { Label } from "@progress/kendo-react-labels";
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
@@ -57,7 +60,167 @@ const IntervalSelection = () => {
     setIntervalDirection(validDirections[validDirectionsIndex]);
   }, [availableIntervals, availableDirections, totalNumAnswered]);
 
-  return <></>;
+  const [userSubmission, setUserSubmission] = useState("");
+  const [userSubmissionError, setUserSubmissionError] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!userSubmission) {
+      setUserSubmissionError(
+        "Please select an interval before submitting your answer"
+      );
+      return;
+    }
+    setUserSubmissionError("");
+    // check if the answer the user submitted matches the intervalName from SelectedIntervalContext
+    // if it does, increment numCorrect
+    // then, user's right or wrong, increment totalNumAnswered, triggering useEffect to select a new interval
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          {userSubmissionError && (
+            <p style={{ color: "red" }}>{userSubmissionError}</p>
+          )}
+          <legend>Select the interval you hear!</legend>
+
+          <Label>
+            {" "}
+            Perfect Unison
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Unison");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            minor 2nd
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("min2");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Major 2nd
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Maj2");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            minor 3rd
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("min3");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Major 3rd
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Maj3");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Perfect 4th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("P4");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Tritone
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Tritone");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Perfect 5th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("P5");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            minor 6th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("min6");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Major 6th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Maj6");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            minor 7th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("min7");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Major 7th
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Maj7");
+              }}
+            />
+          </Label>
+          <Label>
+            {" "}
+            Perfect Octave
+            <RadioButton
+              name="user-selection"
+              onChange={(e) => {
+                e.target.element?.checked && setUserSubmission("Octave");
+              }}
+            />
+          </Label>
+        </fieldset>
+        <FloatingActionButton type="submit" text="Submit Answer" />
+      </form>
+    </>
+  );
 };
 
 export default IntervalSelection;
