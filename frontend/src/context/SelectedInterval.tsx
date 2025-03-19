@@ -7,7 +7,9 @@ interface SelectedIntervalInterface {
   setIntervalFilePath: (path: string) => void;
 }
 
-const SelectedIntervalContext = createContext({} as SelectedIntervalInterface);
+export const SelectedIntervalContext = createContext(
+  {} as SelectedIntervalInterface
+);
 
 const SelectedIntervalContextProvider = ({ children }: PropsWithChildren) => {
   const [intervalName, setIntervalName] = useState("");

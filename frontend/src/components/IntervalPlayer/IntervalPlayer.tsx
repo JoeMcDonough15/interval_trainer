@@ -9,10 +9,6 @@ const IntervalPlayer = () => {
     "available intervals inside IntervalPlayer: ",
     availableIntervals
   );
-  console.log(
-    "available directions inside IntervalPlayer: ",
-    availableDirections
-  );
   return <></>;
 };
 

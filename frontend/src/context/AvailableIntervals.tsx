@@ -1,6 +1,6 @@
 import { createContext, useState, PropsWithChildren } from "react";
 
-interface IntervalsInterface {
+export interface IntervalsInterface {
   Unison: boolean;
   min2: boolean;
   Maj2: boolean;
@@ -16,7 +16,7 @@ interface IntervalsInterface {
   Octave: boolean;
 }
 
-interface DirectionsInterface {
+export interface DirectionsInterface {
   ascending: boolean;
   descending: boolean;
   composite: boolean;
