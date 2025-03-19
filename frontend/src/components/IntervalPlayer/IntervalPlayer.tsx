@@ -1,17 +1,21 @@
 import { useContext } from "react";
-import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
+import { SelectedIntervalContext } from "../../context/SelectedInterval";
+
+// This component needs to access whatever the currently selected intervalName and intervalDirection is
+// and form a string out of it with string interpolation. That string will act as the file path for that interval
+// audio file.  Then we need to render an audio element whose src gets that file path string.
 
 const IntervalPlayer = () => {
-  const { availableIntervals, availableDirections } = useContext(
-    AvailableIntervalsContext
+  const { intervalName, intervalDirection } = useContext(
+    SelectedIntervalContext
   );
   console.log(
-    "available intervals inside IntervalPlayer: ",
-    availableIntervals
+    "currently selected interval inside IntervalPlayer: ",
+    intervalName
   );
   console.log(
-    "available directions inside IntervalPlayer: ",
-    availableDirections
+    "currently selected direction inside IntervalPlayer: ",
+    intervalDirection
   );
   return <></>;
 };

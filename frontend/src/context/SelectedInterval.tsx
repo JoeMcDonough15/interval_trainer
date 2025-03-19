@@ -3,8 +3,8 @@ import { createContext, PropsWithChildren, useState } from "react";
 interface SelectedIntervalInterface {
   intervalName: string;
   setIntervalName: (nameOfInterval: string) => void;
-  intervalFilePath: string;
-  setIntervalFilePath: (path: string) => void;
+  intervalDirection: string;
+  setIntervalDirection: (path: string) => void;
 }
 
 export const SelectedIntervalContext = createContext(
@@ -13,13 +13,13 @@ export const SelectedIntervalContext = createContext(
 
 const SelectedIntervalContextProvider = ({ children }: PropsWithChildren) => {
   const [intervalName, setIntervalName] = useState("");
-  const [intervalFilePath, setIntervalFilePath] = useState("");
+  const [intervalDirection, setIntervalDirection] = useState("");
 
   const contextValue = {
     intervalName,
     setIntervalName,
-    intervalFilePath,
-    setIntervalFilePath,
+    intervalDirection,
+    setIntervalDirection,
   };
 
   return (
