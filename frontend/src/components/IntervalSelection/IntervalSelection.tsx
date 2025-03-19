@@ -9,6 +9,11 @@ import { UserStatsContext } from "../../context/UserStats";
 import { FloatingActionButton } from "@progress/kendo-react-buttons";
 import { RadioButton } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
+import {
+  NotificationGroup,
+  Notification,
+} from "@progress/kendo-react-notification";
+import { Fade } from "@progress/kendo-react-animation";
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
@@ -62,6 +67,8 @@ const IntervalSelection = () => {
 
   const [userSubmission, setUserSubmission] = useState("");
   const [userSubmissionError, setUserSubmissionError] = useState("");
+  const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -73,8 +80,27 @@ const IntervalSelection = () => {
     }
     setUserSubmissionError("");
     // check if the answer the user submitted matches the intervalName from SelectedIntervalContext
-    // if it does, increment numCorrect
+    if (userSubmission === intervalName) {
+      setNumCorrect((prev) => prev + 1);
+      // launch a notification that says correct
+      setTimeout(() => {
+        setAnswerCorrect(true);
+      }, 0);
+      setTimeout(() => {
+        setAnswerCorrect(false);
+      }, 2000);
+    } else {
+      // launch a notification that says incorrect
+      setTimeout(() => {
+        setAnswerIncorrect(true);
+      }, 0);
+      setTimeout(() => {
+        setAnswerIncorrect(false);
+      }, 2000);
+    }
+
     // then, user's right or wrong, increment totalNumAnswered, triggering useEffect to select a new interval
+    setTotalNumAnswered((prev) => prev + 1);
   };
 
   return (
@@ -219,6 +245,22 @@ const IntervalSelection = () => {
         </fieldset>
         <FloatingActionButton type="submit" text="Submit Answer" />
       </form>
+      <NotificationGroup>
+        <Fade>
+          {answerCorrect && (
+            <Notification>
+              <span>Correct!</span>
+            </Notification>
+          )}
+        </Fade>
+        <Fade>
+          {answerIncorrect && (
+            <Notification>
+              <span>That's incorrect</span>
+            </Notification>
+          )}
+        </Fade>
+      </NotificationGroup>
     </>
   );
 };

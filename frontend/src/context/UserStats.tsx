@@ -2,9 +2,9 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 interface UserStatsInterface {
   totalNumAnswered: number;
-  setTotalNumAnswered: (num: number) => void;
+  setTotalNumAnswered: (num: number | ((prev: number) => number)) => void;
   numCorrect: number;
-  setNumCorrect: (num: number) => void;
+  setNumCorrect: (num: number | ((prev: number) => number)) => void;
 }
 
 export const UserStatsContext = createContext({} as UserStatsInterface);
