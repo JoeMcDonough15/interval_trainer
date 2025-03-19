@@ -1,6 +1,6 @@
 import { createContext, useState, PropsWithChildren } from "react";
 
-interface AvailableIntervalsInterface {
+interface IntervalsInterface {
   Unison: boolean;
   min2: boolean;
   Maj2: boolean;
@@ -16,13 +16,22 @@ interface AvailableIntervalsInterface {
   Octave: boolean;
 }
 
-interface AvailableDirectionsInterface {
+interface DirectionsInterface {
   ascending: boolean;
   descending: boolean;
   composite: boolean;
 }
 
-const AvailableIntervalsContext = createContext({});
+interface AvailableIntervalsInterface {
+  availableIntervals: IntervalsInterface;
+  setAvailableIntervals: ({}: IntervalsInterface) => void;
+  availableDirections: DirectionsInterface;
+  setAvailableDirections: ({}: DirectionsInterface) => void;
+}
+
+const AvailableIntervalsContext = createContext(
+  {} as AvailableIntervalsInterface
+);
 
 const AvailableIntervalsProvider = ({ children }: PropsWithChildren) => {
   const [availableIntervals, setAvailableIntervals] = useState({
@@ -39,13 +48,13 @@ const AvailableIntervalsProvider = ({ children }: PropsWithChildren) => {
     min7: true,
     Maj7: true,
     Octave: true,
-  } as AvailableIntervalsInterface);
+  } as IntervalsInterface);
 
   const [availableDirections, setAvailableDirections] = useState({
     ascending: true,
     descending: true,
     composite: true,
-  } as AvailableDirectionsInterface);
+  } as DirectionsInterface);
 
   const contextValue = {
     availableIntervals,
