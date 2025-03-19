@@ -3,6 +3,7 @@ import IntervalPlayer from "./IntervalPlayer";
 import IntervalOptions from "./IntervalOptions";
 import IntervalSelection from "./IntervalSelection";
 import UserStatsContextProvider from "../context/UserStats";
+import StatsDashboard from "./StatsDashboard";
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
       <StackLayout className="main-container">
         <h1>Interval Trainer</h1>
         <UserStatsContextProvider>
-          {/* <StatsDashboard /> */}
+          <StatsDashboard />
           <IntervalSelection />
         </UserStatsContextProvider>
         <IntervalPlayer />
