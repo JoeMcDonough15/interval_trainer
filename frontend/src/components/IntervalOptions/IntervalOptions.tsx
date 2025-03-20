@@ -4,9 +4,9 @@ import {
   DirectionsInterface,
   IntervalsInterface,
 } from "../../context/AvailableIntervals";
-import { Checkbox } from "@progress/kendo-react-inputs";
-import { Label } from "@progress/kendo-react-labels";
 import { Button } from "@progress/kendo-react-buttons";
+import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
+import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
 
 interface IntervalOptionsErrorInterface {
   intervalError?: string;
@@ -71,217 +71,14 @@ const IntervalOptions = () => {
             <p style={{ color: "red" }}>{intervalOptionsError.intervalError}</p>
           )}
           <legend>Intervals To Include</legend>
-          <Label>
-            {" "}
-            Perfect Unison
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return {
-                        ...prevIntervals,
-                        Unison: true,
-                      };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Unison: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            minor 2nd
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min2: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min2: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Major 2nd
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj2: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj2: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            minor 3rd
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min3: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min3: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Major 3rd
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj3: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj3: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Perfect 4th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, P4: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, P4: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Tritone
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Tritone: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Tritone: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Perfect 5th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, P5: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, P5: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            minor 6th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min6: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min6: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Major 6th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj6: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj6: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            minor 7th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min7: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, min7: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Major 7th
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj7: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Maj7: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            {" "}
-            Perfect Octave
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Octave: true };
-                    })
-                  : setIntervals((prevIntervals) => {
-                      return { ...prevIntervals, Octave: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
+          {Object.keys(availableIntervals).map((interval) => {
+            return (
+              <ToggleIntervalCheckbox
+                intervalName={interval}
+                setIntervals={setIntervals}
+              />
+            );
+          })}
         </fieldset>
         <fieldset>
           <legend>Directions To Include</legend>
@@ -290,52 +87,15 @@ const IntervalOptions = () => {
               {intervalOptionsError.directionError}
             </p>
           )}
-          <Label>
-            Ascending
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setDirections((prevDirections) => {
-                      return { ...prevDirections, ascending: true };
-                    })
-                  : setDirections((prevDirections) => {
-                      return { ...prevDirections, ascending: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
-          <Label>
-            Descending
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setDirections((prevDirections) => {
-                      return { ...prevDirections, descending: true };
-                    })
-                  : setDirections((prevDirections) => {
-                      return { ...prevDirections, descending: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
 
-          <Label>
-            Composite
-            <Checkbox
-              onChange={(e) => {
-                e.target.element?.checked
-                  ? setDirections((prevDirections) => {
-                      return { ...prevDirections, composite: true };
-                    })
-                  : setDirections((prevDirections) => {
-                      return { ...prevDirections, composite: false };
-                    });
-              }}
-              defaultChecked={true}
-            />
-          </Label>
+          {Object.keys(availableDirections).map((direction) => {
+            return (
+              <ToggleDirectionCheckbox
+                directionName={direction}
+                setDirections={setDirections}
+              />
+            );
+          })}
         </fieldset>
         <Button>Apply Changes</Button>
       </form>

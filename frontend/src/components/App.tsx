@@ -15,7 +15,6 @@ const App = () => {
           <StatsDashboard />
           <IntervalSelection />
         </UserStatsContextProvider>
-
         <IntervalOptions />
       </StackLayout>
     </main>
