@@ -21,38 +21,41 @@ const IntervalPlayer = () => {
   const audioObj = new Audio(filePath);
   return (
     <section className="interval-player-container row">
-      <button
-        onClick={() => {
-          audioObj.play();
-        }}
-        className="interval-player-button"
-      >
-        <SvgIcon className="svg-icon" size="medium" icon={playIcon} />
-      </button>
-      <button
-        onClick={() => {
-          audioObj.pause();
-        }}
-        className="interval-player-button"
-      >
-        <SvgIcon className="svg-icon" size="medium" icon={pauseIcon} />
-      </button>
-      <button
-        onClick={() => {
-          if (audioObj.volume > 0.1) audioObj.volume -= 0.1;
-        }}
-        className="interval-player-button"
-      >
-        <SvgIcon className="svg-icon" size="medium" icon={volumeDownIcon} />
-      </button>
-      <button
-        onClick={() => {
-          if (audioObj.volume < 1) audioObj.volume += 0.1;
-        }}
-        className="interval-player-button"
-      >
-        <SvgIcon className="svg-icon" size="medium" icon={volumeUpIcon} />
-      </button>
+      <div className="background"></div>
+      <div className="interface row ">
+        <button
+          onClick={() => {
+            audioObj.play();
+          }}
+          className="interval-player-button"
+        >
+          <SvgIcon className="svg-icon" size="medium" icon={playIcon} />
+        </button>
+        <button
+          onClick={() => {
+            audioObj.pause();
+          }}
+          className="interval-player-button"
+        >
+          <SvgIcon className="svg-icon" size="medium" icon={pauseIcon} />
+        </button>
+        <button
+          onClick={() => {
+            if (audioObj.volume > 0.1) audioObj.volume -= 0.1;
+          }}
+          className="interval-player-button"
+        >
+          <SvgIcon className="svg-icon" size="medium" icon={volumeDownIcon} />
+        </button>
+        <button
+          onClick={() => {
+            if (audioObj.volume < 1) audioObj.volume += 0.1;
+          }}
+          className="interval-player-button"
+        >
+          <SvgIcon className="svg-icon" size="medium" icon={volumeUpIcon} />
+        </button>
+      </div>
     </section>
   );
 };
