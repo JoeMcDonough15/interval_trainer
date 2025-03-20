@@ -1,11 +1,5 @@
 import { createContext, PropsWithChildren, useState } from "react";
-
-interface UserStatsInterface {
-  totalNumAnswered: number;
-  setTotalNumAnswered: (num: number | ((prev: number) => number)) => void;
-  numCorrect: number;
-  setNumCorrect: (num: number | ((prev: number) => number)) => void;
-}
+import { UserStatsInterface } from "../types";
 
 export const UserStatsContext = createContext({} as UserStatsInterface);
 

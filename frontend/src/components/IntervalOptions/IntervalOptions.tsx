@@ -1,15 +1,15 @@
 import { FormEvent, useContext, useState } from "react";
-import {
-  AvailableIntervalsContext,
-  DirectionsInterface,
-  IntervalsInterface,
-} from "../../context/AvailableIntervals";
+import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { Button } from "@progress/kendo-react-buttons";
 import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
-import { EmptyInputsErrorType } from "../IntervalSelection/IntervalSelection";
 import EmptyInputsError from "../EmptyInputsError";
 import "./IntervalOptions.css";
+import {
+  DirectionsInterface,
+  EmptyInputsErrorType,
+  IntervalsInterface,
+} from "../../types";
 
 const IntervalOptions = () => {
   const {

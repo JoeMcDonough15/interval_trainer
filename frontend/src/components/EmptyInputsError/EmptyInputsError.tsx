@@ -1,7 +1,7 @@
 import { Slide } from "@progress/kendo-react-animation";
 import { Notification } from "@progress/kendo-react-notification";
-import { EmptyInputsErrorType } from "../IntervalSelection/IntervalSelection";
 import "./EmptyInputsError.css";
+import { EmptyInputsErrorType } from "../../types";
 
 interface Props {
   specificError: string;

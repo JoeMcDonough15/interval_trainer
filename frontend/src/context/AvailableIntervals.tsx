@@ -1,33 +1,9 @@
 import { createContext, useState, PropsWithChildren } from "react";
-
-export interface IntervalsInterface {
-  Unison: boolean;
-  min2: boolean;
-  Maj2: boolean;
-  min3: boolean;
-  Maj3: boolean;
-  P4: boolean;
-  Tritone: boolean;
-  P5: boolean;
-  min6: boolean;
-  Maj6: boolean;
-  min7: boolean;
-  Maj7: boolean;
-  Octave: boolean;
-}
-
-export interface DirectionsInterface {
-  ascending: boolean;
-  descending: boolean;
-  composite: boolean;
-}
-
-interface AvailableIntervalsInterface {
-  availableIntervals: IntervalsInterface;
-  setAvailableIntervals: ({}: IntervalsInterface) => void;
-  availableDirections: DirectionsInterface;
-  setAvailableDirections: ({}: DirectionsInterface) => void;
-}
+import {
+  AvailableIntervalsInterface,
+  DirectionsInterface,
+  IntervalsInterface,
+} from "../types";
 
 export const AvailableIntervalsContext = createContext(
   {} as AvailableIntervalsInterface

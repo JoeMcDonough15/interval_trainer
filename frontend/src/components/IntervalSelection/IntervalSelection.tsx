@@ -1,9 +1,5 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
-import {
-  AvailableIntervalsContext,
-  IntervalsInterface,
-  DirectionsInterface,
-} from "../../context/AvailableIntervals";
+import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { UserStatsContext } from "../../context/UserStats";
 import { FloatingActionButton } from "@progress/kendo-react-buttons";
@@ -15,12 +11,11 @@ import { Fade } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
 import EmptyInputsError from "../EmptyInputsError";
-
-export interface EmptyInputsErrorType {
-  noIntervalsIncluded?: string;
-  noDirectionsIncluded?: string;
-  noIntervalGuessed?: string;
-}
+import {
+  DirectionsInterface,
+  EmptyInputsErrorType,
+  IntervalsInterface,
+} from "../../types";
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.

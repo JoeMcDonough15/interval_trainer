@@ -1,11 +1,5 @@
 import { createContext, PropsWithChildren, useState } from "react";
-
-interface SelectedIntervalInterface {
-  intervalName: string;
-  setIntervalName: (nameOfInterval: string) => void;
-  intervalDirection: string;
-  setIntervalDirection: (path: string) => void;
-}
+import { SelectedIntervalInterface } from "../types";
 
 export const SelectedIntervalContext = createContext(
   {} as SelectedIntervalInterface
