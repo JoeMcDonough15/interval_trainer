@@ -7,14 +7,15 @@ import StatsDashboard from "./StatsDashboard";
 
 const App = () => {
   return (
-    <main>
-      <StackLayout className="main-container">
+    <main className="main-container">
+      <StackLayout className="col">
         <h1>Interval Trainer</h1>
+        <IntervalPlayer />
         <UserStatsContextProvider>
           <StatsDashboard />
           <IntervalSelection />
         </UserStatsContextProvider>
-        <IntervalPlayer />
+
         <IntervalOptions />
       </StackLayout>
     </main>

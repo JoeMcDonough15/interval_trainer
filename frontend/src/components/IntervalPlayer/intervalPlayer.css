@@ -1,0 +1,21 @@
+.interval-player-container {
+  background-color: lightblue;
+  border-radius: 20em;
+  gap: 4px;
+  margin: 20px 0;
+  padding: 20px 40px;
+}
+
+.interval-player-button {
+  display: flex;
+  padding: 0.5em 1em;
+  place-items: center;
+}
+
+.svg-icon {
+  width: 5vw;
+}
+
+.svg-icon path {
+  fill: #fff;
+}

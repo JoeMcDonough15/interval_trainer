@@ -34,8 +34,10 @@ a:hover {
 }
 
 h1 {
-  font-size: 3.2rem;
+  /* font-size: 3.2rem; */
+  font-size: 48px; /* looks ok at 375px vw */
   line-height: 1.1;
+  text-align: center;
 }
 
 button {
@@ -61,8 +63,20 @@ button:focus-visible {
 
 /* Container Classes */
 
-.main-container {
+.main-container,
+.col,
+.row {
   display: flex;
-  flex-direction: column;
   place-items: center;
+}
+
+.main-container,
+.col {
+  flex-direction: column;
+}
+
+.main-container {
+  margin: auto;
+  max-width: 600px;
+  width: 90%;
 }

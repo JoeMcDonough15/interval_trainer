@@ -14,7 +14,7 @@ import {
   Notification,
 } from "@progress/kendo-react-notification";
 import { Fade } from "@progress/kendo-react-animation";
-import "./interval-selection.css";
+import "./intervalSelection.css";
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
