@@ -7,14 +7,13 @@ import {
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { UserStatsContext } from "../../context/UserStats";
 import { FloatingActionButton } from "@progress/kendo-react-buttons";
-import { RadioButton } from "@progress/kendo-react-inputs";
-import { Label } from "@progress/kendo-react-labels";
 import {
   NotificationGroup,
   Notification,
 } from "@progress/kendo-react-notification";
 import { Fade } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
+import SelectIntervalRadioField from "./SelectIntervalRadioField";
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
@@ -112,172 +111,17 @@ const IntervalSelection = () => {
             <p style={{ color: "red" }}>{userSubmissionError}</p>
           )}
           <legend>Select the interval you hear!</legend>
-
-          <Label
-            className={!availableIntervals["Unison"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Perfect Unison
-            <RadioButton
-              disabled={!availableIntervals["Unison"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Unison");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["min2"] ? "disabled-input" : ""}
-          >
-            {" "}
-            minor 2nd
-            <RadioButton
-              disabled={!availableIntervals["min2"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("min2");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Maj2"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Major 2nd
-            <RadioButton
-              disabled={!availableIntervals["Maj2"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Maj2");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["min3"] ? "disabled-input" : ""}
-          >
-            {" "}
-            minor 3rd
-            <RadioButton
-              disabled={!availableIntervals["min3"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("min3");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Maj3"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Major 3rd
-            <RadioButton
-              disabled={!availableIntervals["Maj3"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Maj3");
-              }}
-            />
-          </Label>
-          <Label className={!availableIntervals["P4"] ? "disabled-input" : ""}>
-            {" "}
-            Perfect 4th
-            <RadioButton
-              disabled={!availableIntervals["P4"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("P4");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Tritone"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Tritone
-            <RadioButton
-              disabled={!availableIntervals["Tritone"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Tritone");
-              }}
-            />
-          </Label>
-          <Label className={!availableIntervals["P5"] ? "disabled-input" : ""}>
-            {" "}
-            Perfect 5th
-            <RadioButton
-              disabled={!availableIntervals["P5"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("P5");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["min6"] ? "disabled-input" : ""}
-          >
-            {" "}
-            minor 6th
-            <RadioButton
-              disabled={!availableIntervals["min6"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("min6");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Maj6"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Major 6th
-            <RadioButton
-              disabled={!availableIntervals["Maj6"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Maj6");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["min7"] ? "disabled-input" : ""}
-          >
-            {" "}
-            minor 7th
-            <RadioButton
-              disabled={!availableIntervals["min7"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("min7");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Maj7"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Major 7th
-            <RadioButton
-              disabled={!availableIntervals["Maj7"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Maj7");
-              }}
-            />
-          </Label>
-          <Label
-            className={!availableIntervals["Octave"] ? "disabled-input" : ""}
-          >
-            {" "}
-            Perfect Octave
-            <RadioButton
-              disabled={!availableIntervals["Octave"]}
-              name="user-selection"
-              onChange={(e) => {
-                e.target.element?.checked && setUserSubmission("Octave");
-              }}
-            />
-          </Label>
+          <div className="user-select-inputs row">
+            {Object.keys(availableIntervals).map((interval) => {
+              return (
+                <SelectIntervalRadioField
+                  key={interval}
+                  intervalName={interval}
+                  setUserSubmission={setUserSubmission}
+                />
+              );
+            })}
+          </div>
         </fieldset>
         <FloatingActionButton type="submit" text="Submit Answer" />
       </form>

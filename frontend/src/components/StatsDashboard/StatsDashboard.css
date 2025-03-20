@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.dashboard-container {
+  margin: 20px 0;
+}
+
 .dashboard-card {
   justify-content: space-between;
 }

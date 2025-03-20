@@ -34,8 +34,7 @@ a:hover {
 }
 
 h1 {
-  /* font-size: 3.2rem; */
-  font-size: 48px; /* looks ok at 375px vw */
+  font-size: clamp(1rem, 12.8vw, 4rem);
   line-height: 1.1;
   text-align: center;
 }
