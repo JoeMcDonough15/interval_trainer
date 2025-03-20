@@ -79,3 +79,9 @@ button:focus-visible {
   max-width: 600px;
   width: 90%;
 }
+
+.user-select-inputs {
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 2vw;
+}

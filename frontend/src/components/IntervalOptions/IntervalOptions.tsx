@@ -7,6 +7,7 @@ import {
 import { Button } from "@progress/kendo-react-buttons";
 import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
+import "./IntervalOptions.css";
 
 interface IntervalOptionsErrorInterface {
   intervalError?: string;
@@ -71,14 +72,16 @@ const IntervalOptions = () => {
             <p style={{ color: "red" }}>{intervalOptionsError.intervalError}</p>
           )}
           <legend>Intervals To Include</legend>
-          {Object.keys(availableIntervals).map((interval) => {
-            return (
-              <ToggleIntervalCheckbox
-                intervalName={interval}
-                setIntervals={setIntervals}
-              />
-            );
-          })}
+          <div className="row user-select-inputs">
+            {Object.keys(availableIntervals).map((interval) => {
+              return (
+                <ToggleIntervalCheckbox
+                  intervalName={interval}
+                  setIntervals={setIntervals}
+                />
+              );
+            })}
+          </div>
         </fieldset>
         <fieldset>
           <legend>Directions To Include</legend>
@@ -88,14 +91,16 @@ const IntervalOptions = () => {
             </p>
           )}
 
-          {Object.keys(availableDirections).map((direction) => {
-            return (
-              <ToggleDirectionCheckbox
-                directionName={direction}
-                setDirections={setDirections}
-              />
-            );
-          })}
+          <div className="row user-select-inputs">
+            {Object.keys(availableDirections).map((direction) => {
+              return (
+                <ToggleDirectionCheckbox
+                  directionName={direction}
+                  setDirections={setDirections}
+                />
+              );
+            })}
+          </div>
         </fieldset>
         <Button>Apply Changes</Button>
       </form>
