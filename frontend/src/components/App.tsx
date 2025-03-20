@@ -4,6 +4,7 @@ import IntervalOptions from "./IntervalOptions";
 import IntervalSelection from "./IntervalSelection";
 import UserStatsContextProvider from "../context/UserStats";
 import StatsDashboard from "./StatsDashboard";
+import "@progress/kendo-theme-default/dist/all.css";
 
 const App = () => {
   return (

@@ -7,12 +7,9 @@ import {
 import { Button } from "@progress/kendo-react-buttons";
 import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
+import { EmptyInputsErrorType } from "../IntervalSelection/IntervalSelection";
+import EmptyInputsError from "../EmptyInputsError";
 import "./IntervalOptions.css";
-
-interface IntervalOptionsErrorInterface {
-  intervalError?: string;
-  directionError?: string;
-}
 
 const IntervalOptions = () => {
   const {
@@ -29,19 +26,21 @@ const IntervalOptions = () => {
     availableDirections as DirectionsInterface
   );
   const [intervalOptionsError, setIntervalOptionsError] = useState(
-    {} as IntervalOptionsErrorInterface
+    {} as EmptyInputsErrorType
   );
 
   const handleError = () => {
-    const errors: IntervalOptionsErrorInterface = {};
+    const errors: EmptyInputsErrorType = {};
     const intervalNames = Object.values(intervals);
     if (intervalNames.every((intervalChosen) => !intervalChosen)) {
-      errors.intervalError = "Please select at least one interval";
+      errors.noIntervalsIncluded =
+        "Please include at least one interval for testing";
     }
 
     const directionNames = Object.values(directions);
     if (directionNames.every((directionChosen) => !directionChosen)) {
-      errors.directionError = "Please select at least one interval direction";
+      errors.noDirectionsIncluded =
+        "Please include at least one interval direction for testing";
     }
 
     return errors;
@@ -68,14 +67,17 @@ const IntervalOptions = () => {
     <section className="customize-intervals-section">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          {intervalOptionsError.intervalError && (
-            <p style={{ color: "red" }}>{intervalOptionsError.intervalError}</p>
-          )}
+          <EmptyInputsError
+            errorObj={intervalOptionsError}
+            setErrorObj={setIntervalOptionsError}
+            specificError="noIntervalsIncluded"
+          />
           <legend>Intervals To Include</legend>
           <div className="row user-select-inputs">
             {Object.keys(availableIntervals).map((interval) => {
               return (
                 <ToggleIntervalCheckbox
+                  key={interval}
                   intervalName={interval}
                   setIntervals={setIntervals}
                 />
@@ -85,16 +87,16 @@ const IntervalOptions = () => {
         </fieldset>
         <fieldset>
           <legend>Directions To Include</legend>
-          {intervalOptionsError.directionError && (
-            <p style={{ color: "red" }}>
-              {intervalOptionsError.directionError}
-            </p>
-          )}
-
+          <EmptyInputsError
+            errorObj={intervalOptionsError}
+            setErrorObj={setIntervalOptionsError}
+            specificError="noDirectionsIncluded"
+          />
           <div className="row user-select-inputs">
             {Object.keys(availableDirections).map((direction) => {
               return (
                 <ToggleDirectionCheckbox
+                  key={direction}
                   directionName={direction}
                   setDirections={setDirections}
                 />

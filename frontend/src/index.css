@@ -7,7 +7,9 @@
 }
 
 :root {
-  background-color: #242424;
+  --my-primary-color: lightblue;
+  --my-dark-color: #242424;
+  background-color: var(--my-dark-color);
   color: rgba(255, 255, 255, 0.87);
   color-scheme: light dark;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -65,12 +67,14 @@ button:focus-visible {
 .main-container,
 .col,
 .row {
+  align-items: center;
   display: flex;
-  place-items: center;
+  justify-content: center;
 }
 
 .main-container,
-.col {
+.col,
+.k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col {
   flex-direction: column;
 }
 
@@ -81,7 +85,9 @@ button:focus-visible {
 }
 
 .user-select-inputs {
+  align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
   padding: 20px 2vw;
 }

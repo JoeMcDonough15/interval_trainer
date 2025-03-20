@@ -1,3 +1,9 @@
 .customize-intervals-section {
   width: 100%;
 }
+
+.k-checkbox.k-checkbox-md.k-rounded-md:checked {
+  background-color: var(--my-primary-color);
+  border-color: var(--my-primary-color);
+  color: var(--my-dark-color);
+}

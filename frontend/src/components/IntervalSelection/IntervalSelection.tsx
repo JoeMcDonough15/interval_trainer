@@ -14,6 +14,13 @@ import {
 import { Fade } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
+import EmptyInputsError from "../EmptyInputsError";
+
+export interface EmptyInputsErrorType {
+  noIntervalsIncluded?: string;
+  noDirectionsIncluded?: string;
+  noIntervalGuessed?: string;
+}
 
 const IntervalSelection = () => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
@@ -66,19 +73,31 @@ const IntervalSelection = () => {
   }, [availableIntervals, availableDirections, totalNumAnswered]);
 
   const [userSubmission, setUserSubmission] = useState("");
-  const [userSubmissionError, setUserSubmissionError] = useState("");
+  const [userSubmissionError, setUserSubmissionError] = useState(
+    {} as EmptyInputsErrorType
+  );
   const [answerCorrect, setAnswerCorrect] = useState(false);
   const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
+  const handleError = () => {
+    const errors: EmptyInputsErrorType = {};
+
+    if (!userSubmission) {
+      errors.noIntervalGuessed =
+        "Please select an interval before submitting your answer";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!userSubmission) {
-      setUserSubmissionError(
-        "Please select an interval before submitting your answer"
-      );
+    const errorObj = handleError();
+    if (Object.keys(errorObj).length) {
+      setUserSubmissionError(errorObj);
       return;
     }
-    setUserSubmissionError("");
+    setUserSubmissionError({});
     // check if the answer the user submitted matches the intervalName from SelectedIntervalContext
     if (userSubmission === intervalName) {
       setNumCorrect((prev) => prev + 1);
@@ -107,9 +126,11 @@ const IntervalSelection = () => {
     <section className="user-selection-section">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          {userSubmissionError && (
-            <p style={{ color: "red" }}>{userSubmissionError}</p>
-          )}
+          <EmptyInputsError
+            errorObj={userSubmissionError}
+            setErrorObj={setUserSubmissionError}
+            specificError="noIntervalGuessed"
+          />
           <legend>Select the interval you hear!</legend>
           <div className="user-select-inputs row">
             {Object.keys(availableIntervals).map((interval) => {
@@ -123,7 +144,11 @@ const IntervalSelection = () => {
             })}
           </div>
         </fieldset>
-        <FloatingActionButton type="submit" text="Submit Answer" />
+        <FloatingActionButton
+          className="user-selection-button"
+          type="submit"
+          text="Submit Answer"
+        />
       </form>
       <NotificationGroup>
         <Fade>
