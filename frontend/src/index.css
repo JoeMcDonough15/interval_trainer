@@ -75,6 +75,10 @@ button:focus-visible {
   flex-direction: column;
 }
 
+.k-card.dashboard-card.k-card-vertical.row {
+  flex-direction: row;
+}
+
 .main-container {
   margin: auto;
   min-height: 100vh;

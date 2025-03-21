@@ -7,18 +7,21 @@ import { IntervalsInterface } from "../../types";
 interface Props {
   intervalName: string;
   setUserSubmission: (interval: string) => void;
+  answerShown: boolean;
 }
 
 const SelectIntervalRadioField = ({
   setUserSubmission,
   intervalName,
+  answerShown,
 }: Props) => {
   const { availableIntervals } = useContext(AvailableIntervalsContext);
 
   return (
     <Label
       className={`row radio-label ${
-        !availableIntervals[intervalName as keyof IntervalsInterface]
+        !availableIntervals[intervalName as keyof IntervalsInterface] ||
+        answerShown
           ? "disabled-input"
           : ""
       }`}
@@ -26,7 +29,10 @@ const SelectIntervalRadioField = ({
       {" "}
       <span className="label-text">{intervalName}</span>
       <RadioButton
-        disabled={!availableIntervals[intervalName as keyof IntervalsInterface]}
+        disabled={
+          !availableIntervals[intervalName as keyof IntervalsInterface] ||
+          answerShown
+        }
         name="user-selection"
         onChange={(e) => {
           e.target.element?.checked && setUserSubmission(intervalName);

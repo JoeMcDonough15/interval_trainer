@@ -142,6 +142,7 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
                   key={interval}
                   intervalName={interval}
                   setUserSubmission={setUserSubmission}
+                  answerShown={answerShown}
                 />
               );
             })}
