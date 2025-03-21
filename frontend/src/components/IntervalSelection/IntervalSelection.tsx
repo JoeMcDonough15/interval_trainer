@@ -148,14 +148,14 @@ const IntervalSelection = () => {
       <NotificationGroup>
         <Fade>
           {answerCorrect && (
-            <Notification>
+            <Notification className="user-feedback-notification correct-notification row">
               <span>Correct!</span>
             </Notification>
           )}
         </Fade>
         <Fade>
           {answerIncorrect && (
-            <Notification>
+            <Notification className="user-feedback-notification incorrect-notification row">
               <span>That's incorrect</span>
             </Notification>
           )}
