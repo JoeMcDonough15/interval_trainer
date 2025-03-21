@@ -1,4 +1,4 @@
-import { Checkbox } from "@progress/kendo-react-inputs";
+import { Checkbox, CheckboxChangeEvent } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 import { Dispatch, SetStateAction } from "react";
 import { DirectionsInterface } from "../../types";
@@ -9,25 +9,26 @@ interface Props {
 }
 
 const ToggleDirectionCheckbox = ({ setDirections, directionName }: Props) => {
+  const handleChange = (e: CheckboxChangeEvent) => {
+    if (e.target.value) {
+      setDirections((prevDirections) => {
+        return {
+          ...prevDirections,
+          [directionName]: true,
+        };
+      });
+    } else {
+      setDirections((prevDirections) => {
+        return { ...prevDirections, [directionName]: false };
+      });
+    }
+  };
+
   return (
     <Label>
       {" "}
       {directionName}
-      <Checkbox
-        onChange={(e) => {
-          e.target.element?.checked
-            ? setDirections((prevDirections) => {
-                return {
-                  ...prevDirections,
-                  [directionName]: true,
-                };
-              })
-            : setDirections((prevDirections) => {
-                return { ...prevDirections, [directionName]: false };
-              });
-        }}
-        defaultChecked={true}
-      />
+      <Checkbox onChange={handleChange} defaultChecked={true} />
     </Label>
   );
 };
