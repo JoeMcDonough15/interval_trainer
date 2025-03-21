@@ -4,14 +4,28 @@ import { UserStatsInterface } from "../types";
 export const UserStatsContext = createContext({} as UserStatsInterface);
 
 const UserStatsContextProvider = ({ children }: PropsWithChildren) => {
-  const [totalNumAnswered, setTotalNumAnswered] = useState(0); // either what's in  localStorage or else 0
-  const [numCorrect, setNumCorrect] = useState(0); // either what's in localStorage or else 0
+  const [totalNumAnswered, setTotalNumAnswered] = useState(
+    Number(window.localStorage.getItem("totalNumAnswered"))
+  );
+  const [numCorrect, setNumCorrect] = useState(
+    Number(window.localStorage.getItem("numCorrect"))
+  );
+
+  // functions to send the totalNumAnswered and numCorrect to localStorage
+  const sendStatsToLocalStorage = () => {
+    window.localStorage.setItem(
+      "totalNumAnswered",
+      totalNumAnswered.toString()
+    );
+    window.localStorage.setItem("numCorrect", numCorrect.toString());
+  };
 
   const contextValue = {
     totalNumAnswered,
     setTotalNumAnswered,
     numCorrect,
     setNumCorrect,
+    sendStatsToLocalStorage,
   };
 
   return (

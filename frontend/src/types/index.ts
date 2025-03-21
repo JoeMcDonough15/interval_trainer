@@ -49,4 +49,5 @@ export interface UserStatsInterface {
   setTotalNumAnswered: React.Dispatch<React.SetStateAction<number>>;
   numCorrect: number;
   setNumCorrect: React.Dispatch<React.SetStateAction<number>>;
+  sendStatsToLocalStorage: () => void;
 }
