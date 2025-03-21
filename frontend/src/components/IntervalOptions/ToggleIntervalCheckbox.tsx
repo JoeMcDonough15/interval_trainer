@@ -1,4 +1,4 @@
-import { Checkbox } from "@progress/kendo-react-inputs";
+import { Checkbox, CheckboxChangeEvent } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 import { Dispatch, SetStateAction } from "react";
 import { IntervalsInterface } from "../../types";
@@ -9,26 +9,26 @@ interface Props {
 }
 
 const ToggleIntervalCheckbox = ({ setIntervals, intervalName }: Props) => {
+  const handleChange = (e: CheckboxChangeEvent) => {
+    if (e.target.value) {
+      setIntervals((prevIntervals) => {
+        return {
+          ...prevIntervals,
+          [intervalName]: true,
+        };
+      });
+    } else {
+      setIntervals((prevIntervals) => {
+        return { ...prevIntervals, [intervalName]: false };
+      });
+    }
+  };
+
   return (
     <Label>
       {" "}
       {intervalName}
-      <Checkbox
-        className="interval-checkbox"
-        onChange={(e) => {
-          e.target.element?.checked
-            ? setIntervals((prevIntervals) => {
-                return {
-                  ...prevIntervals,
-                  [intervalName]: true,
-                };
-              })
-            : setIntervals((prevIntervals) => {
-                return { ...prevIntervals, [intervalName]: false };
-              });
-        }}
-        defaultChecked={true}
-      />
+      <Checkbox onChange={handleChange} defaultChecked={true} />
     </Label>
   );
 };
