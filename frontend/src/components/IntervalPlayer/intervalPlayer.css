@@ -40,6 +40,16 @@
   display: flex;
   padding: 0.5em 1em;
   place-items: center;
+  transition: all 250ms ease-in;
+}
+
+.interval-player-button:hover {
+  background-color: transparent;
+  border-color: var(--my-dark-color);
+}
+
+.interval-player-button:hover .svg-icon path {
+  fill: var(--my-dark-color);
 }
 
 .svg-icon {
@@ -48,4 +58,5 @@
 
 .svg-icon path {
   fill: lightblue;
+  transition: all 150ms ease-in;
 }
