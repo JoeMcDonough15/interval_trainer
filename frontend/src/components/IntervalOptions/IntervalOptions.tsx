@@ -29,6 +29,8 @@ const IntervalOptions = () => {
     {} as EmptyInputsErrorType
   );
 
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
     const intervalNames = Object.values(intervals);
@@ -65,47 +67,63 @@ const IntervalOptions = () => {
 
   return (
     <section className="customize-intervals-section">
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <EmptyInputsError
-            errorObj={intervalOptionsError}
-            setErrorObj={setIntervalOptionsError}
-            specificError="noIntervalsIncluded"
-          />
-          <legend>Intervals To Include</legend>
-          <div className="row user-select-inputs">
-            {Object.keys(availableIntervals).map((interval) => {
-              return (
-                <ToggleIntervalCheckbox
-                  key={interval}
-                  intervalName={interval}
-                  setIntervals={setIntervals}
-                />
-              );
-            })}
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Directions To Include</legend>
-          <EmptyInputsError
-            errorObj={intervalOptionsError}
-            setErrorObj={setIntervalOptionsError}
-            specificError="noDirectionsIncluded"
-          />
-          <div className="row user-select-inputs">
-            {Object.keys(availableDirections).map((direction) => {
-              return (
-                <ToggleDirectionCheckbox
-                  key={direction}
-                  directionName={direction}
-                  setDirections={setDirections}
-                />
-              );
-            })}
-          </div>
-        </fieldset>
-        <Button>Apply Changes</Button>
-      </form>
+      <button
+        className="display-options-button"
+        onClick={() => {
+          setSettingsOpen((prevState) => {
+            return !prevState;
+          });
+        }}
+      >
+        {settingsOpen ? "Hide" : "Show"} Settings
+      </button>
+      <div
+        className={`collapsable-options-container ${
+          settingsOpen ? "open" : ""
+        }`}
+      >
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <EmptyInputsError
+              errorObj={intervalOptionsError}
+              setErrorObj={setIntervalOptionsError}
+              specificError="noIntervalsIncluded"
+            />
+            <legend>Intervals To Include</legend>
+            <div className="row user-select-inputs">
+              {Object.keys(availableIntervals).map((interval) => {
+                return (
+                  <ToggleIntervalCheckbox
+                    key={interval}
+                    intervalName={interval}
+                    setIntervals={setIntervals}
+                  />
+                );
+              })}
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Directions To Include</legend>
+            <EmptyInputsError
+              errorObj={intervalOptionsError}
+              setErrorObj={setIntervalOptionsError}
+              specificError="noDirectionsIncluded"
+            />
+            <div className="row user-select-inputs">
+              {Object.keys(availableDirections).map((direction) => {
+                return (
+                  <ToggleDirectionCheckbox
+                    key={direction}
+                    directionName={direction}
+                    setDirections={setDirections}
+                  />
+                );
+              })}
+            </div>
+          </fieldset>
+          <Button>Apply Changes</Button>
+        </form>
+      </div>
     </section>
   );
 };

@@ -2,6 +2,22 @@
   width: 100%;
 }
 
+.display-options-button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  margin-bottom: 20px;
+}
+
+.collapsable-options-container {
+  position: absolute;
+  transform: scaleY(0);
+  transition: all 500ms ease-in;
+}
+
+.collapsable-options-container.open {
+  transform: scaleY(100%);
+}
+
 .k-checkbox.k-checkbox-md.k-rounded-md:checked {
   background-color: var(--my-primary-color);
   border-color: var(--my-primary-color);

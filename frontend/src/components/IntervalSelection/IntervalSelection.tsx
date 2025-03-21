@@ -35,7 +35,7 @@ const IntervalSelection = () => {
   // We will need totalNumAnswered, setTotalNumAnswered, and setNumCorrect so that we can handle
   // the quiz logic.
 
-  const { totalNumAnswered, setTotalNumAnswered, setNumCorrect } =
+  const { setTotalNumAnswered, numCorrect, setNumCorrect } =
     useContext(UserStatsContext);
 
   // We also need a useEffect hook in this component because if the availableIntervals or availableDirections
@@ -65,7 +65,7 @@ const IntervalSelection = () => {
 
     setIntervalName(validIntervals[validIntervalIndex]);
     setIntervalDirection(validDirections[validDirectionsIndex]);
-  }, [availableIntervals, availableDirections, totalNumAnswered]);
+  }, [availableIntervals, availableDirections, numCorrect]);
 
   const [userSubmission, setUserSubmission] = useState("");
   const [userSubmissionError, setUserSubmissionError] = useState(
