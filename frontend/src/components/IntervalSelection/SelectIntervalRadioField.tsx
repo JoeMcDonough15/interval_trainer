@@ -1,10 +1,8 @@
 import { RadioButton } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
-import {
-  AvailableIntervalsContext,
-  IntervalsInterface,
-} from "../../context/AvailableIntervals";
+import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { useContext } from "react";
+import { IntervalsInterface } from "../../types";
 
 interface Props {
   intervalName: string;

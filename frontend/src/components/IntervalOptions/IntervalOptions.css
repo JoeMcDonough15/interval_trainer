@@ -5,7 +5,7 @@
 .collapsable-options-container {
   position: absolute;
   transform: scaleY(0);
-  transition: all 500ms ease-in;
+  transition: all 250ms ease-in;
 }
 
 .collapsable-options-container.open {

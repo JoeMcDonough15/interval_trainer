@@ -35,7 +35,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
     {} as EmptyInputsErrorType
   );
 
-  const [noIntervalsSelected, setNoIntervalsSelected] = useState(false);
+  const [intervalsIncluded, setIntervalsIncluded] = useState("all");
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -73,16 +73,6 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
 
   return (
     <section className="customize-intervals-section">
-      {/* <button
-        className="display-options-button"
-        onClick={() => {
-          setSettingsOpen((prevState) => {
-            return !prevState;
-          });
-        }}
-      >
-        {settingsOpen ? "Hide" : "Show"} Options
-      </button> */}
       <div
         className={`collapsable-options-container ${
           settingsOpen ? "open" : ""
@@ -105,13 +95,17 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                       intervalName={interval}
                       setIntervals={setIntervals}
                       intervals={intervals}
+                      setIntervalsIncluded={setIntervalsIncluded}
                     />
                   );
                 })}
                 <button
                   type="button"
                   onClick={() => {
-                    if (noIntervalsSelected) {
+                    if (
+                      intervalsIncluded === "none" ||
+                      intervalsIncluded === "some"
+                    ) {
                       setIntervals({
                         Unison: true,
                         min2: true,
@@ -127,7 +121,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                         Maj7: true,
                         Octave: true,
                       });
-                      setNoIntervalsSelected(false);
+                      setIntervalsIncluded("all");
                     } else {
                       setIntervals({
                         Unison: false,
@@ -144,11 +138,11 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                         Maj7: false,
                         Octave: false,
                       });
-                      setNoIntervalsSelected(true);
+                      setIntervalsIncluded("none");
                     }
                   }}
                 >
-                  {noIntervalsSelected ? "Select" : "Unselect"} All
+                  {intervalsIncluded === "all" ? "Unselect" : "Select"} All
                 </button>
               </div>
             </fieldset>
