@@ -17,6 +17,11 @@
   max-width: 250px;
 }
 
+.k-disabled.k-fab-solid-primary.user-selection.button,
+.k-fab-solid-primary.user-selection-button:disabled {
+  opacity: 0.2;
+}
+
 .radio-label {
   gap: 4px;
 }

@@ -1,0 +1,10 @@
+.control-panel {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.control-panel-button {
+  background-color: transparent;
+  border: 1px solid #fff;
+}

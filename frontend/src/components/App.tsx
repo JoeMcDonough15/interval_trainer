@@ -5,8 +5,13 @@ import IntervalSelection from "./IntervalSelection";
 import UserStatsContextProvider from "../context/UserStats";
 import StatsDashboard from "./StatsDashboard";
 import "@progress/kendo-theme-default/dist/all.css";
+import ControlPanel from "./ControlPanel";
+import { useState } from "react";
 
 const App = () => {
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [answerShown, setAnswerShown] = useState(false);
+
   return (
     <main className="main-container">
       <StackLayout className="col">
@@ -14,9 +19,17 @@ const App = () => {
         <IntervalPlayer />
         <UserStatsContextProvider>
           <StatsDashboard />
-          <IntervalSelection />
+          <IntervalSelection
+            answerShown={answerShown}
+            setAnswerShown={setAnswerShown}
+          />
         </UserStatsContextProvider>
-        <IntervalOptions />
+        <ControlPanel
+          settingsOpen={settingsOpen}
+          setSettingsOpen={setSettingsOpen}
+          setAnswerShown={setAnswerShown}
+        />
+        <IntervalOptions settingsOpen={settingsOpen} />
       </StackLayout>
     </main>
   );

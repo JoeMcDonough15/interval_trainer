@@ -7,7 +7,7 @@ import {
   NotificationGroup,
   Notification,
 } from "@progress/kendo-react-notification";
-import { Fade } from "@progress/kendo-react-animation";
+import { Fade, Push } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
 import EmptyInputsError from "../EmptyInputsError";
@@ -17,7 +17,12 @@ import {
   IntervalsInterface,
 } from "../../types";
 
-const IntervalSelection = () => {
+interface Props {
+  answerShown: boolean;
+  setAnswerShown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
   // We must use the availableIntervals and availableDirections to randomly select a valid interval test question
   // and to render the correct radio inputs for all available interval options.
@@ -47,6 +52,9 @@ const IntervalSelection = () => {
   // goes in its dependency array.  So every time a user submits an answer, a new interval will be randomly selected.
 
   useEffect(() => {
+    // if the answer is currently shown, wait until user closes that notification to select a new interval.
+    if (answerShown) return;
+
     const validIntervals = Object.keys(availableIntervals).filter(
       (interval) => availableIntervals[interval as keyof IntervalsInterface]
     );
@@ -65,7 +73,7 @@ const IntervalSelection = () => {
 
     setIntervalName(validIntervals[validIntervalIndex]);
     setIntervalDirection(validDirections[validDirectionsIndex]);
-  }, [availableIntervals, availableDirections, numCorrect]);
+  }, [availableIntervals, availableDirections, numCorrect, answerShown]);
 
   const [userSubmission, setUserSubmission] = useState("");
   const [userSubmissionError, setUserSubmissionError] = useState(
@@ -143,6 +151,7 @@ const IntervalSelection = () => {
           className="user-selection-button"
           type="submit"
           text="Submit Answer"
+          disabled={answerShown}
         />
       </form>
       <NotificationGroup>
@@ -161,6 +170,17 @@ const IntervalSelection = () => {
           )}
         </Fade>
       </NotificationGroup>
+      <Push>
+        {answerShown && (
+          <Notification
+            className="show-answer-notification"
+            closable={true}
+            onClose={() => setAnswerShown(false)}
+          >
+            <span>That interval was: {intervalName} </span>
+          </Notification>
+        )}
+      </Push>
     </section>
   );
 };

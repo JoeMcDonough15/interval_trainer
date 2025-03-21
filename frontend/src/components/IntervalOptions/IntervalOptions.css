@@ -2,12 +2,6 @@
   width: 100%;
 }
 
-.display-options-button {
-  background-color: transparent;
-  border: 1px solid #fff;
-  margin-bottom: 20px;
-}
-
 .collapsable-options-container {
   position: absolute;
   transform: scaleY(0);

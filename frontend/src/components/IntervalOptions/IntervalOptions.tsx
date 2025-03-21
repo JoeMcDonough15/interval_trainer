@@ -11,7 +11,11 @@ import {
   IntervalsInterface,
 } from "../../types";
 
-const IntervalOptions = () => {
+interface Props {
+  settingsOpen: boolean;
+}
+
+const IntervalOptions = ({ settingsOpen }: Props) => {
   const {
     availableIntervals,
     setAvailableIntervals,
@@ -30,8 +34,6 @@ const IntervalOptions = () => {
   const [intervalOptionsError, setIntervalOptionsError] = useState(
     {} as EmptyInputsErrorType
   );
-
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const [noIntervalsSelected, setNoIntervalsSelected] = useState(false);
 
@@ -71,7 +73,7 @@ const IntervalOptions = () => {
 
   return (
     <section className="customize-intervals-section">
-      <button
+      {/* <button
         className="display-options-button"
         onClick={() => {
           setSettingsOpen((prevState) => {
@@ -80,7 +82,7 @@ const IntervalOptions = () => {
         }}
       >
         {settingsOpen ? "Hide" : "Show"} Options
-      </button>
+      </button> */}
       <div
         className={`collapsable-options-container ${
           settingsOpen ? "open" : ""
