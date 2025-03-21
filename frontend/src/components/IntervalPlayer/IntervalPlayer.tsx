@@ -17,7 +17,7 @@ const IntervalPlayer = () => {
   const { intervalName, intervalDirection } = useContext(
     SelectedIntervalContext
   );
-  const filePath = `/src/assets/intervals/${intervalName}-${intervalDirection}.wav`;
+  const filePath = `/intervals/${intervalName}-${intervalDirection}.wav`;
   const audioObj = new Audio(filePath);
   return (
     <section className="interval-player-container row">
