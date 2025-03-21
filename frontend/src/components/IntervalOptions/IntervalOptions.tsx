@@ -4,12 +4,12 @@ import { Button } from "@progress/kendo-react-buttons";
 import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
 import EmptyInputsError from "../EmptyInputsError";
-import "./IntervalOptions.css";
 import {
   DirectionsInterface,
   EmptyInputsErrorType,
   IntervalsInterface,
 } from "../../types";
+import "./IntervalOptions.css";
 
 interface Props {
   settingsOpen: boolean;

@@ -171,17 +171,19 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
           )}
         </Fade>
       </NotificationGroup>
-      <Push>
-        {answerShown && (
-          <Notification
-            className="show-answer-notification"
-            closable={true}
-            onClose={() => setAnswerShown(false)}
-          >
-            <span>That interval was: {intervalName} </span>
-          </Notification>
-        )}
-      </Push>
+      <div style={{ height: "0px" }}>
+        <Push>
+          {answerShown && (
+            <Notification
+              className="show-answer-notification"
+              closable={true}
+              onClose={() => setAnswerShown(false)}
+            >
+              <span>That interval was: {intervalName} </span>
+            </Notification>
+          )}
+        </Push>
+      </div>
     </section>
   );
 };
