@@ -7,6 +7,7 @@ import StatsDashboard from "./StatsDashboard";
 import "@progress/kendo-theme-default/dist/all.css";
 import ControlPanel from "./ControlPanel";
 import { useState } from "react";
+import GradientHeader from "./GradientHeader";
 
 const App = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <main className="main-container">
       <StackLayout className="col">
-        <h1>Interval Trainer</h1>
+        <GradientHeader headerText={"Interval Trainer"} />
         <IntervalPlayer />
         <UserStatsContextProvider>
           <StatsDashboard />

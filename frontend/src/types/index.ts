@@ -51,3 +51,7 @@ export interface UserStatsInterface {
   setNumCorrect: React.Dispatch<React.SetStateAction<number>>;
   sendStatsToLocalStorage: () => void;
 }
+
+export interface DigitsObj {
+  [key: number]: string;
+}

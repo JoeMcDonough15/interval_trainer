@@ -7,7 +7,15 @@
 }
 
 :root {
-  --my-primary-color: lightblue;
+  /* --my-primary-color: lightblue; */
+  --my-primary-color: hsl(194.7, 53.3%, 79%);
+  --my-primary-variant-one: hsl(204.7, 53.3%, 79%);
+  --my-primary-variant-two: hsl(214.7, 53.3%, 79%);
+  --my-primary-variant-three: hsl(224.7, 53.3%, 79%);
+  --my-primary-variant-four: hsl(218.7, 53.3%, 79%);
+  --my-primary-variant-five: hsl(214.7, 53.3%, 79%);
+  --my-primary-variant-six: hsl(204.7, 53.3%, 79%);
+  --my-primary-variant-seven: hsl(194.7, 53.3%, 79%);
   --my-dark-color: #242424;
   background-color: var(--my-dark-color);
   color: rgba(255, 255, 255, 0.87);
