@@ -23,3 +23,16 @@
   border-color: var(--my-primary-color);
   color: var(--my-dark-color);
 }
+
+@media screen and (min-width: 1024px) {
+  .intervals-and-directions-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .intervals-included-section,
+  .directions-included-section {
+    width: 40%;
+  }
+}
