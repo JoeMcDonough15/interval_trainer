@@ -22,14 +22,18 @@ const IntervalOptions = () => {
   const [intervals, setIntervals] = useState(
     availableIntervals as IntervalsInterface
   );
+
   const [directions, setDirections] = useState(
     availableDirections as DirectionsInterface
   );
+
   const [intervalOptionsError, setIntervalOptionsError] = useState(
     {} as EmptyInputsErrorType
   );
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+
+  const [noIntervalsSelected, setNoIntervalsSelected] = useState(false);
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -98,9 +102,52 @@ const IntervalOptions = () => {
                       key={interval}
                       intervalName={interval}
                       setIntervals={setIntervals}
+                      intervals={intervals}
                     />
                   );
                 })}
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (noIntervalsSelected) {
+                      setIntervals({
+                        Unison: true,
+                        min2: true,
+                        Maj2: true,
+                        min3: true,
+                        Maj3: true,
+                        P4: true,
+                        Tritone: true,
+                        P5: true,
+                        min6: true,
+                        Maj6: true,
+                        min7: true,
+                        Maj7: true,
+                        Octave: true,
+                      });
+                      setNoIntervalsSelected(false);
+                    } else {
+                      setIntervals({
+                        Unison: false,
+                        min2: false,
+                        Maj2: false,
+                        min3: false,
+                        Maj3: false,
+                        P4: false,
+                        Tritone: false,
+                        P5: false,
+                        min6: false,
+                        Maj6: false,
+                        min7: false,
+                        Maj7: false,
+                        Octave: false,
+                      });
+                      setNoIntervalsSelected(true);
+                    }
+                  }}
+                >
+                  {noIntervalsSelected ? "Select" : "Unselect"} All
+                </button>
               </div>
             </fieldset>
             <fieldset className="directions-included-section">
