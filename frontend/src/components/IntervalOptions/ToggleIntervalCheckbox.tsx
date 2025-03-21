@@ -1,7 +1,7 @@
 import { Checkbox } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
-import { IntervalsInterface } from "../../context/AvailableIntervals";
 import { Dispatch, SetStateAction } from "react";
+import { IntervalsInterface } from "../../types";
 
 interface Props {
   setIntervals: Dispatch<SetStateAction<IntervalsInterface>>;
@@ -14,6 +14,7 @@ const ToggleIntervalCheckbox = ({ setIntervals, intervalName }: Props) => {
       {" "}
       {intervalName}
       <Checkbox
+        className="interval-checkbox"
         onChange={(e) => {
           e.target.element?.checked
             ? setIntervals((prevIntervals) => {

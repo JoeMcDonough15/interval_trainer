@@ -1,7 +1,7 @@
 import { Checkbox } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
-import { DirectionsInterface } from "../../context/AvailableIntervals";
 import { Dispatch, SetStateAction } from "react";
+import { DirectionsInterface } from "../../types";
 
 interface Props {
   setDirections: Dispatch<SetStateAction<DirectionsInterface>>;

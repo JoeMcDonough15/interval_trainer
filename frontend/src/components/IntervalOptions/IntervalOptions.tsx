@@ -75,7 +75,7 @@ const IntervalOptions = () => {
           });
         }}
       >
-        {settingsOpen ? "Hide" : "Show"} Settings
+        {settingsOpen ? "Hide" : "Show"} Options
       </button>
       <div
         className={`collapsable-options-container ${
