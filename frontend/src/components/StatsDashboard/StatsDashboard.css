@@ -3,14 +3,10 @@
   width: 100%;
 }
 
-.dashboard-container {
-  margin: 0 0 30px;
-}
-
 .dashboard-card.k-card.row.dashboard-card.k-card-vertical {
   font-size: inherit;
   justify-content: space-between;
-  padding: 1.4em 3vw;
+  padding: 1em 3vw;
 }
 
 .num-correct-out-of-total.row {

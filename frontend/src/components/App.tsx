@@ -23,21 +23,20 @@ const App = () => {
           headerText={"Interval Trainer"}
         />
         <UserStatsContextProvider>
-          <StatsDashboard
-            answerShown={answerShown}
-            setAnswerShown={setAnswerShown}
-            answerCorrect={answerCorrect}
-            answerIncorrect={answerIncorrect}
-          />
-          <IntervalPlayer />
-          <IntervalSelection
-            answerShown={answerShown}
-            // setAnswerShown={setAnswerShown}
-            // answerCorrect={answerCorrect}
-            setAnswerCorrect={setAnswerCorrect}
-            // answerIncorrect={answerIncorrect}
-            setAnswerIncorrect={setAnswerIncorrect}
-          />
+          <StackLayout className="dashboard-player-and-user-selections-container col">
+            <StatsDashboard
+              answerShown={answerShown}
+              setAnswerShown={setAnswerShown}
+              answerCorrect={answerCorrect}
+              answerIncorrect={answerIncorrect}
+            />
+            <IntervalPlayer />
+            <IntervalSelection
+              answerShown={answerShown}
+              setAnswerCorrect={setAnswerCorrect}
+              setAnswerIncorrect={setAnswerIncorrect}
+            />
+          </StackLayout>
         </UserStatsContextProvider>
         <ControlPanel
           settingsOpen={settingsOpen}

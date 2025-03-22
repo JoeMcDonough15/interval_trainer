@@ -47,7 +47,7 @@ a:hover {
 h1 {
   font-size: clamp(1rem, 12.8vw, 4rem);
   line-height: 1.1;
-  margin: 1em 0;
+  margin: 0.5em 0;
   text-align: center;
 }
 
@@ -102,6 +102,10 @@ legend {
   width: 100%;
 }
 
+.k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col.dashboard-player-and-user-selections-container {
+  gap: 25px;
+}
+
 .k-card.dashboard-card.k-card-vertical.row {
   flex-direction: row;
 }
@@ -116,8 +120,22 @@ legend {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px 15vw;
+}
+
+.user-select-inputs.row .k-label.row.centered-spaced-row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-selection-section
+  .user-select-inputs.row
+  .k-label.row.centered-spaced-row,
+.intervals-included-section
+  .user-select-inputs.row
+  .k-label.row.centered-spaced-row {
+  width: 40%;
 }
 
 .transparent-btn,

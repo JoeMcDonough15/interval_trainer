@@ -21,29 +21,6 @@
   width: 100%;
 }
 
-.intervals-and-directions-container .user-select-inputs.row {
-  justify-content: space-between;
-}
-
-.intervals-and-directions-container
-  .intervals-included-section
-  .user-select-inputs.row
-  .k-label.row,
-.intervals-and-directions-container
-  .directions-included-section
-  .user-select-inputs.row
-  .k-label.row {
-  align-items: center;
-  justify-content: space-between;
-}
-
-.intervals-and-directions-container
-  .intervals-included-section
-  .user-select-inputs.row
-  .k-label.row {
-  width: 40%;
-}
-
 .intervals-and-directions-container
   .directions-included-section
   .user-select-inputs.row

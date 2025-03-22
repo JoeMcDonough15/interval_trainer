@@ -19,7 +19,7 @@ const SelectIntervalRadioField = ({
 
   return (
     <Label
-      className={`row radio-label ${
+      className={`row centered-spaced-row ${
         !availableIntervals[intervalName as keyof IntervalsInterface] ||
         answerShown
           ? "disabled-input"

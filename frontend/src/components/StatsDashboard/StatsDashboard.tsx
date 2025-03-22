@@ -40,7 +40,7 @@ const StatsDashboard = ({
   }, [numCorrect, totalNumAnswered, sendStatsToLocalStorage]);
 
   return (
-    <section className="row dashboard-container">
+    <section className="row">
       <Card className="row dashboard-card">
         {totalNumAnswered > 0 ? (
           <>

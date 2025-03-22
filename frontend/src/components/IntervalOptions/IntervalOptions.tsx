@@ -110,7 +110,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                 />
               </div>
               <legend>Intervals To Include</legend>
-              <div className="row user-select-inputs">
+              <div className="user-select-inputs row">
                 {Object.keys(availableIntervals).map((interval) => {
                   return (
                     <ToggleIntervalCheckbox
