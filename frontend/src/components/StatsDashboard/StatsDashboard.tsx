@@ -76,7 +76,10 @@ const StatsDashboard = ({
           </>
         ) : (
           <div className="instructions row">
-            <p>Let's practice some intervals!</p>
+            <div className="instructions-text col">
+              <p>Let's practice some intervals!</p>
+              <p>Click the play button to get started.</p>
+            </div>
           </div>
         )}
         <NotificationGroup className="user-answer-notifications">

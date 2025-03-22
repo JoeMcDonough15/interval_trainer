@@ -9,6 +9,11 @@
   padding: 1em 3vw;
 }
 
+.instructions-text {
+  align-items: flex-start;
+  gap: 5px;
+}
+
 .num-correct-out-of-total.row {
   justify-content: space-between;
   width: 100%;
