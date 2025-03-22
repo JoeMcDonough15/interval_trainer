@@ -31,6 +31,7 @@
 
 body {
   font-size: clamp(0.875rem, 4.8vw, 1.125rem);
+  min-height: 100vh;
 }
 
 a {
@@ -71,6 +72,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+legend {
+  padding: 0 10px;
+}
+
 /* Container Classes */
 
 .main-container,
@@ -87,15 +92,18 @@ button:focus-visible {
   flex-direction: column;
 }
 
-.k-card.dashboard-card.k-card-vertical.row {
-  flex-direction: row;
-}
-
 .main-container {
   margin: auto;
-  min-height: 100vh;
   max-width: 600px;
   width: 90%;
+}
+
+.k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col {
+  width: 100%;
+}
+
+.k-card.dashboard-card.k-card-vertical.row {
+  flex-direction: row;
 }
 
 .notification-container {
@@ -109,5 +117,17 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  padding: 20px 6vw;
+  padding: 20px 15vw;
+}
+
+.transparent-btn,
+.control-panel-button.show-answer-button.transparent-btn,
+.control-panel-button.display-options-button.transparent-btn,
+.intervals-and-directions-container
+  .user-select-inputs.row
+  .select-unselect-all-btn
+  .select-unselect-all-btn.transparent-btn {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
 }

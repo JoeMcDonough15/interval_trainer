@@ -86,7 +86,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
   return (
     <section className="customize-intervals-section">
       <div
-        className={`collapsable-options-container ${
+        className={`collapsable-options-container main-container ${
           settingsOpen ? "open" : ""
         }`}
       >
@@ -100,7 +100,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
               )}
             </Slide>
           </div>
-          <div className="intervals-and-directions-container">
+          <div className="intervals-and-directions-container col">
             <fieldset className="intervals-included-section">
               <div className="notification-container">
                 <EmptyInputsErrorNotification
@@ -123,6 +123,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                   );
                 })}
                 <button
+                  className="select-unselect-all-btn transparent-btn"
                   type="button"
                   onClick={() => {
                     if (
@@ -192,7 +193,7 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
             </fieldset>
           </div>
 
-          <Button>Apply Changes</Button>
+          <Button className="apply-changes-btn">Apply Changes</Button>
         </form>
       </div>
     </section>

@@ -2,17 +2,7 @@
   width: 100%;
 }
 
-.intervals-and-directions-container .user-select-inputs.row {
-  justify-content: space-between;
-}
-
-.intervals-and-directions-container .user-select-inputs.row .k-label {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.collapsable-options-container {
+.main-container.collapsable-options-container {
   position: absolute;
   transform: scaleY(0);
   transition: all 250ms ease-in;
@@ -22,16 +12,61 @@
   transform: scaleY(100%);
 }
 
+.intervals-and-directions-container {
+  gap: 20px;
+}
+
+.intervals-and-directions-container .user-select-inputs.row {
+  justify-content: space-between;
+}
+
+.intervals-and-directions-container
+  .intervals-included-section
+  .user-select-inputs.row
+  .k-label.row,
+.intervals-and-directions-container
+  .directions-included-section
+  .user-select-inputs.row
+  .k-label.row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intervals-and-directions-container
+  .intervals-included-section
+  .user-select-inputs.row
+  .k-label.row {
+  width: 40%;
+}
+
+.intervals-and-directions-container
+  .directions-included-section
+  .user-select-inputs.row
+  .k-label.row {
+  width: 60%;
+}
+
+.intervals-and-directions-container
+  .user-select-inputs.row
+  .select-unselect-all-btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
 .k-checkbox.k-checkbox-md.k-rounded-md:checked {
   background-color: var(--my-primary-color);
   border-color: var(--my-primary-color);
   color: var(--my-dark-color);
 }
 
-@media screen and (min-width: 1024px) {
+.apply-changes-btn {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 1200px) {
   .intervals-and-directions-container {
     align-items: center;
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     max-width: 600px;
   }
@@ -42,9 +77,31 @@
 
   .directions-included-section {
     align-self: stretch;
+    width: 40%;
   }
 
+  .intervals-and-directions-container .user-select-inputs.row {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px 3vw;
+  }
   .directions-included-section > .user-select-inputs {
     flex-direction: column;
+  }
+
+  .intervals-and-directions-container
+    .intervals-included-section
+    .user-select-inputs.row
+    .k-label.row {
+    width: 30%;
+  }
+
+  .intervals-and-directions-container
+    .directions-included-section
+    .user-select-inputs.row
+    .k-label.row {
+    width: 100%;
   }
 }

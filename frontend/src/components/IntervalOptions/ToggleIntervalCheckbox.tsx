@@ -41,7 +41,7 @@ const ToggleIntervalCheckbox = ({
   };
 
   return (
-    <Label>
+    <Label className="row">
       {" "}
       {intervalName}
       <Checkbox

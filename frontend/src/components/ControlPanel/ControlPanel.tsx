@@ -14,7 +14,7 @@ const ControlPanel = ({
   return (
     <section className="control-panel row">
       <button
-        className="control-panel-button display-options-button"
+        className="control-panel-button display-options-button transparent-btn"
         onClick={() => {
           setSettingsOpen((prevState) => {
             return !prevState;
@@ -24,7 +24,7 @@ const ControlPanel = ({
         {settingsOpen ? "Hide" : "Show"} Options
       </button>
       <button
-        className="control-panel-button show-answer-button"
+        className="control-panel-button show-answer-button transparent-btn"
         onClick={() => {
           setAnswerShown(true);
         }}

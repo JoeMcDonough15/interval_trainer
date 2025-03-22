@@ -25,7 +25,7 @@ const ToggleDirectionCheckbox = ({ setDirections, directionName }: Props) => {
   };
 
   return (
-    <Label>
+    <Label className="row">
       {" "}
       {directionName}
       <Checkbox onChange={handleChange} defaultChecked={true} />
