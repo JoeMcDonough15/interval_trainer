@@ -21,18 +21,18 @@ const DIGIT_MAP: DigitsObj = {
 const GradientHeader = ({ headerText, settingsOpen }: Props) => {
   const headerRef = useRef<HTMLHeadingElement | null>(null);
 
-  const scrollHeader = () => {
+  const scrollToHeader = () => {
     const header = headerRef.current;
-    if (header && !settingsOpen) {
+    if (header) {
       header.scrollIntoView({ behavior: "instant" });
     }
   };
 
   useEffect(() => {
     if (!settingsOpen) {
-      scrollHeader();
+      scrollToHeader();
     }
-  }, [scrollHeader, settingsOpen]);
+  }, [scrollToHeader, settingsOpen]);
 
   const createSubStrings = (headerText: string) => {
     const substrings = [];

@@ -12,6 +12,8 @@ import GradientHeader from "./GradientHeader";
 const App = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [answerShown, setAnswerShown] = useState(false);
+  const [answerCorrect, setAnswerCorrect] = useState(false);
+  const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
   return (
     <main className="main-container">
@@ -21,11 +23,20 @@ const App = () => {
           headerText={"Interval Trainer"}
         />
         <UserStatsContextProvider>
-          <StatsDashboard />
+          <StatsDashboard
+            answerShown={answerShown}
+            setAnswerShown={setAnswerShown}
+            answerCorrect={answerCorrect}
+            answerIncorrect={answerIncorrect}
+          />
           <IntervalPlayer />
           <IntervalSelection
             answerShown={answerShown}
-            setAnswerShown={setAnswerShown}
+            // setAnswerShown={setAnswerShown}
+            // answerCorrect={answerCorrect}
+            setAnswerCorrect={setAnswerCorrect}
+            // answerIncorrect={answerIncorrect}
+            setAnswerIncorrect={setAnswerIncorrect}
           />
         </UserStatsContextProvider>
         <ControlPanel

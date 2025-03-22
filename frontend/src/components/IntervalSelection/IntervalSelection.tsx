@@ -3,11 +3,11 @@ import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { UserStatsContext } from "../../context/UserStats";
 import { FloatingActionButton } from "@progress/kendo-react-buttons";
-import {
-  NotificationGroup,
-  Notification,
-} from "@progress/kendo-react-notification";
-import { Fade, Push } from "@progress/kendo-react-animation";
+// import {
+//   NotificationGroup,
+//   Notification,
+// } from "@progress/kendo-react-notification";
+// import { Fade, Push } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
 import {
@@ -19,10 +19,18 @@ import EmptyInputsErrorNotification from "../EmptyInputsErrorNotification";
 
 interface Props {
   answerShown: boolean;
-  setAnswerShown: React.Dispatch<React.SetStateAction<boolean>>;
+  // setAnswerShown: React.Dispatch<React.SetStateAction<boolean>>;
+  // answerCorrect: boolean;
+  setAnswerCorrect: React.Dispatch<React.SetStateAction<boolean>>;
+  // answerIncorrect: boolean;
+  setAnswerIncorrect: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
+const IntervalSelection = ({
+  answerShown,
+  setAnswerCorrect,
+  setAnswerIncorrect,
+}: Props) => {
   // we will need availableIntervals, availableDirections from AvailableIntervalsContext.
   // We must use the availableIntervals and availableDirections to randomly select a valid interval test question
   // and to render the correct radio inputs for all available interval options.
@@ -79,8 +87,6 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
   const [userSubmissionError, setUserSubmissionError] = useState(
     {} as EmptyInputsErrorType
   );
-  const [answerCorrect, setAnswerCorrect] = useState(false);
-  const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -153,35 +159,6 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
           disabled={answerShown}
         />
       </form>
-      <NotificationGroup>
-        <Fade>
-          {answerCorrect && (
-            <Notification className="user-feedback-notification correct-notification row">
-              <span>Correct!</span>
-            </Notification>
-          )}
-        </Fade>
-        <Fade>
-          {answerIncorrect && (
-            <Notification className="user-feedback-notification incorrect-notification row">
-              <span>That's incorrect</span>
-            </Notification>
-          )}
-        </Fade>
-        <div className="notification-container">
-          <Push>
-            {answerShown && (
-              <Notification
-                className="show-answer-notification"
-                closable={true}
-                onClose={() => setAnswerShown(false)}
-              >
-                <span>That interval was: {intervalName} </span>
-              </Notification>
-            )}
-          </Push>
-        </div>
-      </NotificationGroup>
     </section>
   );
 };

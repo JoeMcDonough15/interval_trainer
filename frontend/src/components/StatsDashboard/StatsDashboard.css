@@ -26,11 +26,75 @@
 }
 
 .section-one {
+  align-items: stretch;
+  align-self: stretch;
+  justify-content: space-between;
   max-width: 115px;
   width: 35%;
+}
+
+.section-two {
+  align-self: flex-end;
+}
+
+.k-icon.k-svg-icon.k-svg-i-music-notes.k-icon-lg {
+  height: 27vw;
+  max-height: 100px;
+  width: 27vw;
+  max-width: 100px;
 }
 
 .instructions {
   justify-content: center;
   width: 100%;
+}
+
+.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button {
+  background-color: transparent;
+  border-color: var(--my-dark-color);
+  color: var(--my-dark-color);
+  transition: all 250ms ease-in;
+}
+
+.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:hover,
+.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus-visible,
+.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus {
+  background-color: var(--my-dark-color);
+  border-color: #fff;
+  color: #fff;
+}
+
+.k-notification-group.user-answer-notifications,
+.notification-container.show-answer-notification-container,
+.k-animation-container.k-animation-container-relative.animation-container-for-show-answer,
+.k-notification-group.user-answer-notifications
+  .k-animation-container.k-animation-container-relative {
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.k-notification.show-answer-notification.k-notification-closable,
+.k-notification.user-feedback-notification.correct-notification,
+.k-notification.user-feedback-notification.incorrect-notification {
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.625em 2.5em;
+  width: 100%;
+}
+
+.k-notification.show-answer-notification.k-notification-closable {
+  background-color: black;
+  padding: 1em 0.8em;
+}
+
+.k-notification.user-feedback-notification.correct-notification {
+  background-color: green;
+}
+
+.k-notification.user-feedback-notification.incorrect-notification {
+  background-color: red;
 }

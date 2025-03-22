@@ -23,10 +23,18 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    max-width: 600px;
   }
 
-  .intervals-included-section,
+  .intervals-included-section {
+    width: 60%;
+  }
+
   .directions-included-section {
-    width: 40%;
+    align-self: stretch;
+  }
+
+  .directions-included-section > .user-select-inputs {
+    flex-direction: column;
   }
 }

@@ -35,21 +35,6 @@
   color: var(--my-dark-color);
 }
 
-.k-notification.user-feedback-notification {
-  color: #fff;
-  left: 25%;
-  position: fixed;
-  top: 50px;
-}
-
-.k-notification.user-feedback-notification.correct-notification {
-  background-color: green;
-}
-
-.k-notification.user-feedback-notification.incorrect-notification {
-  background-color: red;
-}
-
 @media screen and (max-width: 540px) {
   .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
     bottom: -40% !important;
