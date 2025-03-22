@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserStatsContext } from "../../context/UserStats";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { Card } from "@progress/kendo-react-layout";
