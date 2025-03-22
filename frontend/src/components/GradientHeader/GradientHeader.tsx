@@ -1,7 +1,9 @@
+import { useEffect, useRef } from "react";
 import { DigitsObj } from "../../types";
 
 interface Props {
   headerText: string;
+  settingsOpen: boolean;
 }
 
 const DIGIT_MAP: DigitsObj = {
@@ -16,7 +18,22 @@ const DIGIT_MAP: DigitsObj = {
   9: "nine",
 };
 
-const GradientHeader = ({ headerText }: Props) => {
+const GradientHeader = ({ headerText, settingsOpen }: Props) => {
+  const headerRef = useRef<HTMLHeadingElement | null>(null);
+
+  const scrollHeader = () => {
+    const header = headerRef.current;
+    if (header && !settingsOpen) {
+      header.scrollIntoView({ behavior: "instant" });
+    }
+  };
+
+  useEffect(() => {
+    if (!settingsOpen) {
+      scrollHeader();
+    }
+  }, [scrollHeader, settingsOpen]);
+
   const createSubStrings = (headerText: string) => {
     const substrings = [];
 
@@ -37,7 +54,7 @@ const GradientHeader = ({ headerText }: Props) => {
   const substrings = createSubStrings(headerText);
 
   return (
-    <h1>
+    <h1 ref={headerRef}>
       {substrings.map((substring, index) => {
         return (
           <span

@@ -16,7 +16,10 @@ const App = () => {
   return (
     <main className="main-container">
       <StackLayout className="col">
-        <GradientHeader headerText={"Interval Trainer"} />
+        <GradientHeader
+          settingsOpen={settingsOpen}
+          headerText={"Interval Trainer"}
+        />
         <UserStatsContextProvider>
           <StatsDashboard />
           <IntervalPlayer />
