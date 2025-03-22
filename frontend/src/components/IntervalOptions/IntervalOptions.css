@@ -4,6 +4,7 @@
 
 .main-container.collapsable-options-container {
   position: absolute;
+  padding-bottom: 70px;
   transform: scaleY(0);
   transition: all 250ms ease-in;
 }
@@ -30,8 +31,9 @@
 
 .intervals-and-directions-container
   .user-select-inputs.row
-  .select-unselect-all-btn {
-  margin-top: 10px;
+  .select-unselect-all-btn-container.row {
+  justify-content: center;
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -42,5 +44,5 @@
 }
 
 .apply-changes-btn {
-  margin-top: 20px;
+  margin-top: 40px;
 }

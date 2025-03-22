@@ -45,16 +45,16 @@
   width: 100%;
 }
 
-.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button {
+.k-button.k-button-sm.k-button-solid.k-button-solid-base.k-rounded-md.reset-button {
   background-color: transparent;
   border-color: var(--my-dark-color);
   color: var(--my-dark-color);
   transition: all 250ms ease-in;
 }
 
-.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:hover,
-.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus-visible,
-.k-button.k-button-md.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus {
+.k-button.k-button-sm.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:hover,
+.k-button.k-button-sm.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus-visible,
+.k-button.k-button-sm.k-button-solid.k-button-solid-base.k-rounded-md.reset-button:focus {
   background-color: var(--my-dark-color);
   border-color: #fff;
   color: #fff;

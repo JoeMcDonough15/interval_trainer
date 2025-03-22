@@ -56,7 +56,8 @@ const StatsDashboard = ({
                 </div>
               </div>
               <Button
-                className="reset-button"
+                size="small"
+                className="reset-button transparent-btn"
                 onClick={() => {
                   setNumCorrect(0);
                   setTotalNumAnswered(0);

@@ -1,4 +1,5 @@
 import "./ControlPanel.css";
+import { Button } from "@progress/kendo-react-buttons";
 
 interface Props {
   settingsOpen: boolean;
@@ -13,7 +14,7 @@ const ControlPanel = ({
 }: Props) => {
   return (
     <section className="control-panel row">
-      <button
+      <Button
         className="control-panel-button display-options-button transparent-btn"
         onClick={() => {
           setSettingsOpen((prevState) => {
@@ -22,15 +23,15 @@ const ControlPanel = ({
         }}
       >
         {settingsOpen ? "Hide" : "Show"} Options
-      </button>
-      <button
+      </Button>
+      <Button
         className="control-panel-button show-answer-button transparent-btn"
         onClick={() => {
           setAnswerShown(true);
         }}
       >
         Show Answer
-      </button>
+      </Button>
     </section>
   );
 };

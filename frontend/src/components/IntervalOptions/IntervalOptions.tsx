@@ -122,52 +122,55 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
                     />
                   );
                 })}
-                <button
-                  className="select-unselect-all-btn transparent-btn"
-                  type="button"
-                  onClick={() => {
-                    if (
-                      intervalsIncluded === "none" ||
-                      intervalsIncluded === "some"
-                    ) {
-                      setIntervals({
-                        Unison: true,
-                        min2: true,
-                        Maj2: true,
-                        min3: true,
-                        Maj3: true,
-                        P4: true,
-                        Tritone: true,
-                        P5: true,
-                        min6: true,
-                        Maj6: true,
-                        min7: true,
-                        Maj7: true,
-                        Octave: true,
-                      });
-                      setIntervalsIncluded("all");
-                    } else {
-                      setIntervals({
-                        Unison: false,
-                        min2: false,
-                        Maj2: false,
-                        min3: false,
-                        Maj3: false,
-                        P4: false,
-                        Tritone: false,
-                        P5: false,
-                        min6: false,
-                        Maj6: false,
-                        min7: false,
-                        Maj7: false,
-                        Octave: false,
-                      });
-                      setIntervalsIncluded("none");
-                    }
-                  }}
-                >
-                  {intervalsIncluded === "all" ? "Unselect" : "Select"} All
-                </button>
+                <div className="select-unselect-all-btn-container row">
+                  <Button
+                    size="small"
+                    className="select-unselect-all-btn"
+                    type="button"
+                    onClick={() => {
+                      if (
+                        intervalsIncluded === "none" ||
+                        intervalsIncluded === "some"
+                      ) {
+                        setIntervals({
+                          Unison: true,
+                          min2: true,
+                          Maj2: true,
+                          min3: true,
+                          Maj3: true,
+                          P4: true,
+                          Tritone: true,
+                          P5: true,
+                          min6: true,
+                          Maj6: true,
+                          min7: true,
+                          Maj7: true,
+                          Octave: true,
+                        });
+                        setIntervalsIncluded("all");
+                      } else {
+                        setIntervals({
+                          Unison: false,
+                          min2: false,
+                          Maj2: false,
+                          min3: false,
+                          Maj3: false,
+                          P4: false,
+                          Tritone: false,
+                          P5: false,
+                          min6: false,
+                          Maj6: false,
+                          min7: false,
+                          Maj7: false,
+                          Octave: false,
+                        });
+                        setIntervalsIncluded("none");
+                      }
+                    }}
+                  >
+                    {intervalsIncluded === "all" ? "Unselect" : "Select"} All
+                  </Button>
+                </div>
               </div>
             </fieldset>
             <fieldset className="directions-included-section">
