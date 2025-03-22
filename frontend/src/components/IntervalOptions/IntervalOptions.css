@@ -68,7 +68,6 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    max-width: 600px;
   }
 
   .intervals-included-section {
