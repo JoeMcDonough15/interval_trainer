@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserStatsContext } from "../../context/UserStats";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { Card } from "@progress/kendo-react-layout";
@@ -31,6 +31,8 @@ const StatsDashboard = ({
     setNumCorrect,
     setTotalNumAnswered,
     sendStatsToLocalStorage,
+    setConsecutiveCorrect,
+    fiveInARow,
   } = useContext(UserStatsContext);
 
   const { intervalName } = useContext(SelectedIntervalContext);
@@ -61,6 +63,7 @@ const StatsDashboard = ({
                 onClick={() => {
                   setNumCorrect(0);
                   setTotalNumAnswered(0);
+                  setConsecutiveCorrect(0);
                 }}
               >
                 Reset
@@ -97,6 +100,15 @@ const StatsDashboard = ({
               {answerIncorrect && (
                 <Notification className="user-feedback-notification incorrect-notification row">
                   <span>Incorrect</span>
+                </Notification>
+              )}
+            </Fade>
+          </div>
+          <div className="notification-container">
+            <Fade>
+              {fiveInARow && (
+                <Notification className="user-feedback-notification five-in-a-row-notification row">
+                  <span>⭐️ Way to go! 5 in a row! ⭐️</span>
                 </Notification>
               )}
             </Fade>

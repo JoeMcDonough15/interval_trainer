@@ -3,11 +3,6 @@ import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { UserStatsContext } from "../../context/UserStats";
 import { FloatingActionButton } from "@progress/kendo-react-buttons";
-// import {
-//   NotificationGroup,
-//   Notification,
-// } from "@progress/kendo-react-notification";
-// import { Fade, Push } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
 import {
@@ -19,10 +14,7 @@ import EmptyInputsErrorNotification from "../EmptyInputsErrorNotification";
 
 interface Props {
   answerShown: boolean;
-  // setAnswerShown: React.Dispatch<React.SetStateAction<boolean>>;
-  // answerCorrect: boolean;
   setAnswerCorrect: React.Dispatch<React.SetStateAction<boolean>>;
-  // answerIncorrect: boolean;
   setAnswerIncorrect: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -48,8 +40,14 @@ const IntervalSelection = ({
   // We will need totalNumAnswered, setTotalNumAnswered, and setNumCorrect so that we can handle
   // the quiz logic.
 
-  const { setTotalNumAnswered, numCorrect, setNumCorrect } =
-    useContext(UserStatsContext);
+  const {
+    setTotalNumAnswered,
+    numCorrect,
+    setNumCorrect,
+    consecutiveCorrect,
+    setConsecutiveCorrect,
+    setFiveInARow,
+  } = useContext(UserStatsContext);
 
   // We also need a useEffect hook in this component because if the availableIntervals or availableDirections
   // ever change, we want to reselect a new random interval guaranteed to be in the availableIntervals and
@@ -115,12 +113,27 @@ const IntervalSelection = ({
       setTimeout(() => {
         setAnswerCorrect(false);
       }, 2000);
+      if (consecutiveCorrect === 4) {
+        // if we have 4 correct, and got this one right, that's 5 in a row!
+        setTimeout(() => {
+          setFiveInARow(true);
+        }, 2000); // leave 2 seconds for the Correct notification to show from answerCorrect being set to true
+        setTimeout(() => {
+          setFiveInARow(false);
+        }, 4000);
+        setConsecutiveCorrect(0); // reset consecutive back to 0 because the next correct answer should be 1 out of 5
+      } else {
+        // increment consecutiveCount because the answer was correct but it wasn't the 5th yet
+        setConsecutiveCorrect((prev) => prev + 1);
+      }
     } else {
       // launch a notification that says incorrect
       setAnswerIncorrect(true);
       setTimeout(() => {
         setAnswerIncorrect(false);
       }, 2000);
+      // reset consecutiveCorrect to 0 because we broke the correct streak
+      setConsecutiveCorrect(0);
     }
 
     // then, user's right or wrong, increment totalNumAnswered, triggering useEffect to select a new interval

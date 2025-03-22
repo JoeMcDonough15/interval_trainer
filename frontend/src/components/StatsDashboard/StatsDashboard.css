@@ -80,7 +80,8 @@
 
 .k-notification.show-answer-notification.k-notification-closable,
 .k-notification.user-feedback-notification.correct-notification,
-.k-notification.user-feedback-notification.incorrect-notification {
+.k-notification.user-feedback-notification.incorrect-notification,
+.k-notification.user-feedback-notification.five-in-a-row-notification {
   color: #fff;
   font-size: 1rem;
   padding: 0.625em 2.5em;
@@ -98,4 +99,8 @@
 
 .k-notification.user-feedback-notification.incorrect-notification {
   background-color: red;
+}
+
+.k-notification.user-feedback-notification.five-in-a-row-notification {
+  background-color: navy;
 }

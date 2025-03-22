@@ -50,6 +50,10 @@ export interface UserStatsInterface {
   numCorrect: number;
   setNumCorrect: React.Dispatch<React.SetStateAction<number>>;
   sendStatsToLocalStorage: () => void;
+  consecutiveCorrect: number;
+  setConsecutiveCorrect: React.Dispatch<React.SetStateAction<number>>;
+  fiveInARow: boolean;
+  setFiveInARow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface DigitsObj {

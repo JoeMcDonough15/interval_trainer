@@ -10,6 +10,8 @@ const UserStatsContextProvider = ({ children }: PropsWithChildren) => {
   const [numCorrect, setNumCorrect] = useState(
     Number(window.localStorage.getItem("numCorrect"))
   );
+  const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+  const [fiveInARow, setFiveInARow] = useState(false);
 
   // functions to send the totalNumAnswered and numCorrect to localStorage
   const sendStatsToLocalStorage = () => {
@@ -26,6 +28,10 @@ const UserStatsContextProvider = ({ children }: PropsWithChildren) => {
     numCorrect,
     setNumCorrect,
     sendStatsToLocalStorage,
+    consecutiveCorrect,
+    setConsecutiveCorrect,
+    fiveInARow,
+    setFiveInARow,
   };
 
   return (
