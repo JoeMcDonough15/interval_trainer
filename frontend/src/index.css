@@ -94,6 +94,12 @@ button:focus-visible {
   width: 90%;
 }
 
+.notification-container {
+  height: 0px;
+}
+
+/* Custom reused classes */
+
 .user-select-inputs {
   align-items: center;
   flex-wrap: wrap;

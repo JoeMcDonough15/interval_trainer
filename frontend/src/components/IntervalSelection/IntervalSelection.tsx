@@ -10,12 +10,12 @@ import {
 import { Fade, Push } from "@progress/kendo-react-animation";
 import "./intervalSelection.css";
 import SelectIntervalRadioField from "./SelectIntervalRadioField";
-import EmptyInputsError from "../EmptyInputsError";
 import {
   DirectionsInterface,
   EmptyInputsErrorType,
   IntervalsInterface,
 } from "../../types";
+import EmptyInputsErrorNotification from "../EmptyInputsErrorNotification";
 
 interface Props {
   answerShown: boolean;
@@ -105,17 +105,13 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
     if (userSubmission === intervalName) {
       setNumCorrect((prev) => prev + 1);
       // launch a notification that says correct
-      setTimeout(() => {
-        setAnswerCorrect(true);
-      }, 0);
+      setAnswerCorrect(true);
       setTimeout(() => {
         setAnswerCorrect(false);
       }, 2000);
     } else {
       // launch a notification that says incorrect
-      setTimeout(() => {
-        setAnswerIncorrect(true);
-      }, 0);
+      setAnswerIncorrect(true);
       setTimeout(() => {
         setAnswerIncorrect(false);
       }, 2000);
@@ -129,11 +125,13 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
     <section className="user-selection-section">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <EmptyInputsError
-            errorObj={userSubmissionError}
-            setErrorObj={setUserSubmissionError}
-            specificError="noIntervalGuessed"
-          />
+          <div className="notification-container">
+            <EmptyInputsErrorNotification
+              errorObj={userSubmissionError}
+              setErrorObj={setUserSubmissionError}
+              specificError="noIntervalGuessed"
+            />
+          </div>
           <legend>Select the interval you hear!</legend>
           <div className="user-select-inputs row">
             {Object.keys(availableIntervals).map((interval) => {
@@ -170,20 +168,20 @@ const IntervalSelection = ({ answerShown, setAnswerShown }: Props) => {
             </Notification>
           )}
         </Fade>
+        <div className="notification-container">
+          <Push>
+            {answerShown && (
+              <Notification
+                className="show-answer-notification"
+                closable={true}
+                onClose={() => setAnswerShown(false)}
+              >
+                <span>That interval was: {intervalName} </span>
+              </Notification>
+            )}
+          </Push>
+        </div>
       </NotificationGroup>
-      <div style={{ height: "0px" }}>
-        <Push>
-          {answerShown && (
-            <Notification
-              className="show-answer-notification"
-              closable={true}
-              onClose={() => setAnswerShown(false)}
-            >
-              <span>That interval was: {intervalName} </span>
-            </Notification>
-          )}
-        </Push>
-      </div>
     </section>
   );
 };

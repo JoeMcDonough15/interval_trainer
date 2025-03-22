@@ -3,13 +3,15 @@ import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 import { Button } from "@progress/kendo-react-buttons";
 import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
-import EmptyInputsError from "../EmptyInputsError";
+import EmptyInputsErrorNotification from "../EmptyInputsErrorNotification";
 import {
   DirectionsInterface,
   EmptyInputsErrorType,
   IntervalsInterface,
 } from "../../types";
 import "./IntervalOptions.css";
+import { Slide } from "@progress/kendo-react-animation";
+import { Notification } from "@progress/kendo-react-notification";
 
 interface Props {
   settingsOpen: boolean;
@@ -36,6 +38,8 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
   );
 
   const [intervalsIncluded, setIntervalsIncluded] = useState("all");
+
+  const [changesApplied, setChangesApplied] = useState(false);
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -68,6 +72,14 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
     // if no errors, update the state of the availableIntervals and availableDirections
     setAvailableIntervals(intervals);
     setAvailableDirections(directions);
+
+    // since the form was successfully submitted, we should update the state of changesApplied
+    // using a setTimeout so the notification appears and then disappears on its own
+    setChangesApplied(true);
+    setTimeout(() => {
+      setChangesApplied(false);
+    }, 2000);
+
     return;
   };
 
@@ -79,13 +91,24 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
         }`}
       >
         <form onSubmit={handleSubmit}>
+          <div className="notification-container">
+            <Slide>
+              {changesApplied && (
+                <Notification type={{ style: "success" }}>
+                  <span>Changes applied</span>
+                </Notification>
+              )}
+            </Slide>
+          </div>
           <div className="intervals-and-directions-container">
             <fieldset className="intervals-included-section">
-              <EmptyInputsError
-                errorObj={intervalOptionsError}
-                setErrorObj={setIntervalOptionsError}
-                specificError="noIntervalsIncluded"
-              />
+              <div className="notification-container">
+                <EmptyInputsErrorNotification
+                  errorObj={intervalOptionsError}
+                  setErrorObj={setIntervalOptionsError}
+                  specificError="noIntervalsIncluded"
+                />
+              </div>
               <legend>Intervals To Include</legend>
               <div className="row user-select-inputs">
                 {Object.keys(availableIntervals).map((interval) => {
@@ -148,11 +171,13 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
             </fieldset>
             <fieldset className="directions-included-section">
               <legend>Directions To Include</legend>
-              <EmptyInputsError
-                errorObj={intervalOptionsError}
-                setErrorObj={setIntervalOptionsError}
-                specificError="noDirectionsIncluded"
-              />
+              <div className="notification-container">
+                <EmptyInputsErrorNotification
+                  errorObj={intervalOptionsError}
+                  setErrorObj={setIntervalOptionsError}
+                  specificError="noDirectionsIncluded"
+                />
+              </div>
               <div className="row user-select-inputs">
                 {Object.keys(availableDirections).map((direction) => {
                   return (
