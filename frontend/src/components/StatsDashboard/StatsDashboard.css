@@ -4,10 +4,33 @@
 }
 
 .dashboard-container {
-  margin: 20px 0;
+  margin: 0 0 30px;
 }
 
-.dashboard-card {
+.dashboard-card.k-card.row.dashboard-card.k-card-vertical {
+  font-size: inherit;
   justify-content: space-between;
-  padding: 20px 3vw;
+  padding: 1.4em 3vw;
+}
+
+.num-correct-out-of-total.row {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.section-one,
+.labels-col,
+.values-col {
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.section-one {
+  max-width: 115px;
+  width: 35%;
+}
+
+.instructions {
+  justify-content: center;
+  width: 100%;
 }

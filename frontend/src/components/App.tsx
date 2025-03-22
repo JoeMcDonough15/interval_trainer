@@ -17,9 +17,9 @@ const App = () => {
     <main className="main-container">
       <StackLayout className="col">
         <GradientHeader headerText={"Interval Trainer"} />
-        <IntervalPlayer />
         <UserStatsContextProvider>
           <StatsDashboard />
+          <IntervalPlayer />
           <IntervalSelection
             answerShown={answerShown}
             setAnswerShown={setAnswerShown}

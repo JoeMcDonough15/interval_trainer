@@ -29,6 +29,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  font-size: clamp(0.875rem, 4.8vw, 1.125rem);
+}
+
 a {
   color: #646cff;
   font-weight: 500;

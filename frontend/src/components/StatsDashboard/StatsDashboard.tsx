@@ -22,28 +22,38 @@ const StatsDashboard = () => {
       <Card className="row dashboard-card">
         {totalNumAnswered > 0 ? (
           <>
-            <div className="row num-correct-out-of-total">
-              <span>{numCorrect}</span>
-              <span>/</span>
-              <span>{totalNumAnswered}</span>
+            <div className="section-one col">
+              <div className="row num-correct-out-of-total">
+                <div className="col labels-col">
+                  <span>correct:</span>
+                  <span>total:</span>{" "}
+                </div>
+                <div className="col values-col">
+                  <span>{numCorrect}</span>
+                  <span>{totalNumAnswered}</span>
+                </div>
+              </div>
+              <Button
+                onClick={() => {
+                  setNumCorrect(0);
+                  setTotalNumAnswered(0);
+                }}
+              >
+                Reset
+              </Button>
             </div>
-
-            <p className="average">
-              Your average is{" "}
-              {Math.round((numCorrect / totalNumAnswered) * 100)}%
-            </p>
+            <div className="section-two">
+              <p className="average">
+                Your average is{" "}
+                {Math.round((numCorrect / totalNumAnswered) * 100)}%
+              </p>
+            </div>
           </>
         ) : (
-          <p className="instructions">Let's practice some intervals!</p>
+          <div className="instructions row">
+            <p>Let's practice some intervals!</p>
+          </div>
         )}
-        <Button
-          onClick={() => {
-            setNumCorrect(0);
-            setTotalNumAnswered(0);
-          }}
-        >
-          Reset
-        </Button>
       </Card>
     </section>
   );
