@@ -16,6 +16,11 @@
   gap: 20px;
 }
 
+.intervals-and-directions-container .intervals-included-section,
+.intervals-and-directions-container .directions-included-section {
+  width: 100%;
+}
+
 .intervals-and-directions-container .user-select-inputs.row {
   justify-content: space-between;
 }
@@ -61,46 +66,4 @@
 
 .apply-changes-btn {
   margin-top: 20px;
-}
-
-@media screen and (min-width: 1200px) {
-  .intervals-and-directions-container {
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .intervals-included-section {
-    width: 60%;
-  }
-
-  .directions-included-section {
-    align-self: stretch;
-    width: 40%;
-  }
-
-  .intervals-and-directions-container .user-select-inputs.row {
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    padding: 20px 3vw;
-  }
-  .directions-included-section > .user-select-inputs {
-    flex-direction: column;
-  }
-
-  .intervals-and-directions-container
-    .intervals-included-section
-    .user-select-inputs.row
-    .k-label.row {
-    width: 30%;
-  }
-
-  .intervals-and-directions-container
-    .directions-included-section
-    .user-select-inputs.row
-    .k-label.row {
-    width: 100%;
-  }
 }

@@ -131,3 +131,9 @@ legend {
   border: 1px solid #fff;
   color: #fff;
 }
+
+@media screen and (min-width: 1200px) {
+  .user-select-inputs {
+    padding: 20px 3vw;
+  }
+}
