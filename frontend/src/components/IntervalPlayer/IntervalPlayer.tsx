@@ -17,6 +17,7 @@ const IntervalPlayer = () => {
   const { intervalName, intervalDirection } = useContext(
     SelectedIntervalContext
   );
+  if (!intervalName || !intervalDirection) return;
   const filePath = `/intervals/${intervalName}-${intervalDirection}.wav`;
   const audioObj = new Audio(filePath);
   return (
