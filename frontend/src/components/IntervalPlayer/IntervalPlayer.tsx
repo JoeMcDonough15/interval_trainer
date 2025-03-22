@@ -18,7 +18,7 @@ const IntervalPlayer = () => {
     SelectedIntervalContext
   );
   if (!intervalName || !intervalDirection) return;
-  const filePath = `/intervals/${intervalName}-${intervalDirection}.wav`;
+  const filePath = `https://musical-ear-intervals.s3.us-east-1.amazonaws.com/${intervalName}-${intervalDirection}.wav`;
   const audioObj = new Audio(filePath);
   return (
     <section className="interval-player-container row">
