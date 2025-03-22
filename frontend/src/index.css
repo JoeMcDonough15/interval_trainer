@@ -127,6 +127,7 @@ legend {
 .user-select-inputs.row .k-label.row.centered-spaced-row {
   align-items: center;
   justify-content: space-between;
+  max-width: 120px;
 }
 
 .user-selection-section

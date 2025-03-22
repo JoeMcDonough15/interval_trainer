@@ -5,11 +5,12 @@
 .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
   background-color: var(--my-primary-color);
   border-color: var(--my-primary-color);
-  bottom: -20% !important;
+  bottom: -22% !important;
   color: var(--my-dark-color);
+  font-size: inherit;
   left: 30% !important;
   outline: var(--my-primary-color);
-  padding: 16px 20%;
+  padding: 1em 25%;
   position: absolute;
   right: 30% !important;
   max-height: 50px;
@@ -31,14 +32,8 @@
   color: var(--my-dark-color);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 640px) {
   .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
-    padding: 10px 23%;
-  }
-}
-
-@media screen and (max-width: 300px) {
-  .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
-    padding: 10px 25%;
+    bottom: -30% !important;
   }
 }
