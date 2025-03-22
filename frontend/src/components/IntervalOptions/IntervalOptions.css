@@ -2,6 +2,16 @@
   width: 100%;
 }
 
+.intervals-and-directions-container .user-select-inputs.row {
+  justify-content: space-between;
+}
+
+.intervals-and-directions-container .user-select-inputs.row .k-label {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .collapsable-options-container {
   position: absolute;
   transform: scaleY(0);
