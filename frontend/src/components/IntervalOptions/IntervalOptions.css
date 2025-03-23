@@ -6,17 +6,15 @@
   max-height: 900px;
   max-width: 650px;
   overflow: scroll;
-  padding: 70px 2px;
+  padding: 40px 2px;
   position: fixed;
   top: 50%;
   width: 90%;
 }
 
-.settings-close-button {
-  padding: 8px 2%;
-  position: absolute;
-  right: 15px;
-  top: 15px;
+.customize-intervals-section.main-container,
+.header-and-close.row {
+  gap: 40px;
 }
 
 .customize-intervals-section.main-container {
@@ -24,13 +22,18 @@
   transition: transform 5000ms ease-in;
 }
 
-@keyframes slide-open {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(100%);
-  }
+.header-and-close.row {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.customize-intervals-header {
+  margin-left: 20%;
+}
+
+.settings-close-button {
+  color: var(--my-primary-color);
+  padding: 8px 2%;
 }
 
 .intervals-and-directions-container {
@@ -69,4 +72,13 @@
 
 .apply-changes-btn {
   margin-top: 40px;
+}
+
+@keyframes slide-open {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(100%);
+  }
 }

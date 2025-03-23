@@ -98,15 +98,19 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
         }}
         className="settings-content"
       >
-        <button
-          className="settings-close-button"
-          onClick={() => {
-            setSettingsOpen(false);
-          }}
-        >
-          Close
-        </button>
         <div className="customize-intervals-section main-container">
+          <div className="header-and-close row">
+            <h2 className="customize-intervals-header">Options</h2>
+            <button
+              className="settings-close-button"
+              onClick={() => {
+                setSettingsOpen(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+
           <form onSubmit={handleSubmit}>
             <div className="notification-container">
               <Slide>
