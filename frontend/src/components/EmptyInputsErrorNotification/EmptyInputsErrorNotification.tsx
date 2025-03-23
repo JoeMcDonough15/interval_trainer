@@ -14,7 +14,7 @@ const EmptyInputsErrorNotification = ({
   specificError,
 }: Props) => {
   return (
-    <Slide>
+    <Slide enter={true} exit={true}>
       {errorObj[specificError as keyof EmptyInputsErrorType] && (
         <Notification
           type={{ style: "error" }}
