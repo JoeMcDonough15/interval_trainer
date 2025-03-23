@@ -1,19 +1,26 @@
-/* .customize-intervals-section {
-  width: 100%;
+.settings-content {
+  background-color: black;
+  bottom: 50%;
+  height: 90vh;
+  margin: auto;
+  max-width: 600px;
+  overflow: scroll;
+  padding: 70px 2px;
+  position: fixed;
+  top: 50%;
+  width: 90vw;
 }
 
-.main-container.collapsable-options-container {
-  animation: 500ms 1 alternate slide-open;
+.settings-close-button {
+  padding: 8px 2%;
   position: absolute;
-  padding-bottom: 70px;
-  transition: transform 5000ms ease-in;
-} */
-.customize-intervals-section.main-container.collapsable-options-container {
+  right: 15px;
+  top: 15px;
+}
+
+.customize-intervals-section.main-container {
   animation: 500ms 1 alternate slide-open;
-  position: absolute;
-  padding-bottom: 70px;
   transition: transform 5000ms ease-in;
-  width: 100%;
 }
 
 @keyframes slide-open {
@@ -30,15 +37,19 @@
 }
 
 .intervals-and-directions-container .intervals-included-section,
-.intervals-and-directions-container .directions-included-section {
+.intervals-and-directions-container .directions-included-section,
+.intervals-and-directions-container
+  .directions-included-section
+  .user-select-inputs.row
+  .k-label.row {
   width: 100%;
 }
 
 .intervals-and-directions-container
   .directions-included-section
   .user-select-inputs.row
-  .k-label.row {
-  width: 60%;
+  .k-label.row.centered-spaced-row {
+  max-width: 120px;
 }
 
 .intervals-and-directions-container

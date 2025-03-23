@@ -78,6 +78,7 @@ legend {
 
 /* Container Classes */
 
+.settings-container,
 .main-container,
 .col,
 .row {
@@ -96,6 +97,20 @@ legend {
   margin: auto;
   max-width: 650px;
   width: 90%;
+}
+
+.main-container.settings-open {
+  filter: opacity(0.03);
+}
+
+.settings-container {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
 }
 
 .k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col {
@@ -119,15 +134,15 @@ legend {
 .user-select-inputs {
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: clamp(10px, 2.66vw, 30px);
   justify-content: space-between;
-  padding: 20px 15vw;
+  padding: 20px 6vw;
 }
 
 .user-select-inputs.row .k-label.row.centered-spaced-row {
   align-items: center;
   justify-content: space-between;
-  max-width: 120px;
+  max-width: 90px;
 }
 
 .user-selection-section
@@ -136,7 +151,7 @@ legend {
 .intervals-included-section
   .user-select-inputs.row
   .k-label.row.centered-spaced-row {
-  width: 40%;
+  width: 45%;
 }
 
 .transparent-btn,

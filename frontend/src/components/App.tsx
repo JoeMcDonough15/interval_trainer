@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <>
-      <main className="main-container">
+      <main className={`main-container ${settingsOpen ? "settings-open" : ""}`}>
         <StackLayout className="col">
           <GradientHeader
             settingsOpen={settingsOpen}
@@ -46,7 +46,7 @@ const App = () => {
           />
         </StackLayout>
       </main>
-      {settingsOpen && <IntervalOptions />}
+      {settingsOpen && <IntervalOptions setSettingsOpen={setSettingsOpen} />}
     </>
   );
 };
