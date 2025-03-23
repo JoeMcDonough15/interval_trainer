@@ -1,12 +1,12 @@
 import { Checkbox, CheckboxChangeEvent } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
-import { IntervalsInterface } from "../../types";
+import { AllOrNone, IntervalsInterface } from "../../types";
 
 interface Props {
   intervals: IntervalsInterface;
   setIntervals: React.Dispatch<React.SetStateAction<IntervalsInterface>>;
   intervalName: string;
-  setIntervalsIncluded: React.Dispatch<React.SetStateAction<string>>;
+  setIntervalsIncluded: React.Dispatch<React.SetStateAction<AllOrNone>>;
 }
 
 const ToggleIntervalCheckbox = ({

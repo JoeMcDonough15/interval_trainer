@@ -5,13 +5,12 @@ import ToggleIntervalCheckbox from "./ToggleIntervalCheckbox";
 import ToggleDirectionCheckbox from "./ToggleDirectionCheckbox";
 import EmptyInputsErrorNotification from "../EmptyInputsErrorNotification";
 import {
+  AllOrNone,
   DirectionsInterface,
   EmptyInputsErrorType,
   IntervalsInterface,
 } from "../../types";
 import "./IntervalOptions.css";
-import { Slide } from "@progress/kendo-react-animation";
-import { Notification } from "@progress/kendo-react-notification";
 
 interface Props {
   setSettingsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,9 +36,7 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
     {} as EmptyInputsErrorType
   );
 
-  const [intervalsIncluded, setIntervalsIncluded] = useState("all");
-
-  const [changesApplied, setChangesApplied] = useState(false);
+  const [intervalsIncluded, setIntervalsIncluded] = useState<AllOrNone>("all");
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -73,13 +70,7 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
     setAvailableIntervals(intervals);
     setAvailableDirections(directions);
 
-    // since the form was successfully submitted, we should update the state of changesApplied
-    // using a setTimeout so the notification appears and then disappears on its own
-    setChangesApplied(true);
-    setTimeout(() => {
-      setChangesApplied(false);
-    }, 2000);
-
+    // and close the modal
     setSettingsOpen(false);
 
     return;
@@ -112,24 +103,8 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="notification-container">
-              <Slide>
-                {changesApplied && (
-                  <Notification type={{ style: "success" }}>
-                    <span>Changes applied</span>
-                  </Notification>
-                )}
-              </Slide>
-            </div>
             <div className="intervals-and-directions-container col">
               <fieldset className="intervals-included-section">
-                <div className="notification-container">
-                  <EmptyInputsErrorNotification
-                    errorObj={intervalOptionsError}
-                    setErrorObj={setIntervalOptionsError}
-                    specificError="noIntervalsIncluded"
-                  />
-                </div>
                 <legend>Intervals To Include</legend>
                 <div className="user-select-inputs row">
                   {Object.keys(availableIntervals).map((interval) => {
@@ -149,10 +124,7 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
                       className="select-unselect-all-btn"
                       type="button"
                       onClick={() => {
-                        if (
-                          intervalsIncluded === "none" ||
-                          intervalsIncluded === "some"
-                        ) {
+                        if (intervalsIncluded === "none") {
                           setIntervals({
                             Unison: true,
                             min2: true,
@@ -169,7 +141,7 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
                             Octave: true,
                           });
                           setIntervalsIncluded("all");
-                        } else {
+                        } else if (intervalsIncluded === "all") {
                           setIntervals({
                             Unison: false,
                             min2: false,
@@ -192,6 +164,14 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
                       {intervalsIncluded === "all" ? "Unselect" : "Select"} All
                     </Button>
                   </div>
+                </div>
+                <div className="notification-container">
+                  <EmptyInputsErrorNotification
+                    errorObj={intervalOptionsError}
+                    setErrorObj={setIntervalOptionsError}
+                    specificError="noIntervalsIncluded"
+                    direction="up"
+                  />
                 </div>
               </fieldset>
               <fieldset className="directions-included-section">

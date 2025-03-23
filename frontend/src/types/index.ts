@@ -59,3 +59,5 @@ export interface UserStatsInterface {
 export interface DigitsObj {
   [key: number]: string;
 }
+
+export type AllOrNone = "all" | "none";

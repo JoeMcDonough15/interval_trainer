@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserStatsContext } from "../../context/UserStats";
 import { SelectedIntervalContext } from "../../context/SelectedInterval";
 import { Card } from "@progress/kendo-react-layout";
@@ -8,9 +8,10 @@ import {
   NotificationGroup,
   Notification,
 } from "@progress/kendo-react-notification";
-import { Fade, Push } from "@progress/kendo-react-animation";
+import { Fade, Push, Slide } from "@progress/kendo-react-animation";
 import { SvgIcon } from "@progress/kendo-react-common";
 import { musicNotesIcon } from "@progress/kendo-svg-icons";
+import { AvailableIntervalsContext } from "../../context/AvailableIntervals";
 
 interface Props {
   answerShown: boolean;
@@ -36,10 +37,27 @@ const StatsDashboard = ({
   } = useContext(UserStatsContext);
 
   const { intervalName } = useContext(SelectedIntervalContext);
+  const { availableIntervals } = useContext(AvailableIntervalsContext);
+
+  const [changesApplied, setChangesApplied] = useState<undefined | boolean>(
+    undefined
+  );
 
   useEffect(() => {
     sendStatsToLocalStorage();
   }, [numCorrect, totalNumAnswered, sendStatsToLocalStorage]);
+
+  useEffect(() => {
+    if (changesApplied === undefined) {
+      setChangesApplied(false);
+      return;
+    }
+
+    setChangesApplied(true);
+    setTimeout(() => {
+      setChangesApplied(false);
+    }, 2000);
+  }, [availableIntervals, setChangesApplied]);
 
   return (
     <section className="row">
@@ -126,6 +144,15 @@ const StatsDashboard = ({
               </Notification>
             )}
           </Push>
+          <div className="notification-container">
+            <Slide>
+              {changesApplied && (
+                <Notification type={{ style: "success" }}>
+                  <span>Changes applied</span>
+                </Notification>
+              )}
+            </Slide>
+          </div>
         </div>
       </Card>
     </section>
