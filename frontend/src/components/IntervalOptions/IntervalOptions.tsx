@@ -13,11 +13,7 @@ import "./IntervalOptions.css";
 import { Slide } from "@progress/kendo-react-animation";
 import { Notification } from "@progress/kendo-react-notification";
 
-interface Props {
-  settingsOpen: boolean;
-}
-
-const IntervalOptions = ({ settingsOpen }: Props) => {
+const IntervalOptions = () => {
   const {
     availableIntervals,
     setAvailableIntervals,
@@ -84,122 +80,120 @@ const IntervalOptions = ({ settingsOpen }: Props) => {
   };
 
   return (
-    <section className="customize-intervals-section">
-      <div
-        className={`collapsable-options-container main-container ${
-          settingsOpen ? "open" : ""
-        }`}
-      >
-        <form onSubmit={handleSubmit}>
-          <div className="notification-container">
-            <Slide>
-              {changesApplied && (
-                <Notification type={{ style: "success" }}>
-                  <span>Changes applied</span>
-                </Notification>
-              )}
-            </Slide>
-          </div>
-          <div className="intervals-and-directions-container col">
-            <fieldset className="intervals-included-section">
-              <div className="notification-container">
-                <EmptyInputsErrorNotification
-                  errorObj={intervalOptionsError}
-                  setErrorObj={setIntervalOptionsError}
-                  specificError="noIntervalsIncluded"
-                />
+    // <section className="customize-intervals-section">
+    //   <div className={"collapsable-options-container main-container"}>
+    <dialog className="customize-intervals-section collapsable-options-container main-container">
+      {/* <div className={"collapsable-options-container main-container"}> */}
+      <form onSubmit={handleSubmit}>
+        <div className="notification-container">
+          <Slide>
+            {changesApplied && (
+              <Notification type={{ style: "success" }}>
+                <span>Changes applied</span>
+              </Notification>
+            )}
+          </Slide>
+        </div>
+        <div className="intervals-and-directions-container col">
+          <fieldset className="intervals-included-section">
+            <div className="notification-container">
+              <EmptyInputsErrorNotification
+                errorObj={intervalOptionsError}
+                setErrorObj={setIntervalOptionsError}
+                specificError="noIntervalsIncluded"
+              />
+            </div>
+            <legend>Intervals To Include</legend>
+            <div className="user-select-inputs row">
+              {Object.keys(availableIntervals).map((interval) => {
+                return (
+                  <ToggleIntervalCheckbox
+                    key={interval}
+                    intervalName={interval}
+                    setIntervals={setIntervals}
+                    intervals={intervals}
+                    setIntervalsIncluded={setIntervalsIncluded}
+                  />
+                );
+              })}
+              <div className="select-unselect-all-btn-container row">
+                <Button
+                  size="small"
+                  className="select-unselect-all-btn"
+                  type="button"
+                  onClick={() => {
+                    if (
+                      intervalsIncluded === "none" ||
+                      intervalsIncluded === "some"
+                    ) {
+                      setIntervals({
+                        Unison: true,
+                        min2: true,
+                        Maj2: true,
+                        min3: true,
+                        Maj3: true,
+                        P4: true,
+                        Tritone: true,
+                        P5: true,
+                        min6: true,
+                        Maj6: true,
+                        min7: true,
+                        Maj7: true,
+                        Octave: true,
+                      });
+                      setIntervalsIncluded("all");
+                    } else {
+                      setIntervals({
+                        Unison: false,
+                        min2: false,
+                        Maj2: false,
+                        min3: false,
+                        Maj3: false,
+                        P4: false,
+                        Tritone: false,
+                        P5: false,
+                        min6: false,
+                        Maj6: false,
+                        min7: false,
+                        Maj7: false,
+                        Octave: false,
+                      });
+                      setIntervalsIncluded("none");
+                    }
+                  }}
+                >
+                  {intervalsIncluded === "all" ? "Unselect" : "Select"} All
+                </Button>
               </div>
-              <legend>Intervals To Include</legend>
-              <div className="user-select-inputs row">
-                {Object.keys(availableIntervals).map((interval) => {
-                  return (
-                    <ToggleIntervalCheckbox
-                      key={interval}
-                      intervalName={interval}
-                      setIntervals={setIntervals}
-                      intervals={intervals}
-                      setIntervalsIncluded={setIntervalsIncluded}
-                    />
-                  );
-                })}
-                <div className="select-unselect-all-btn-container row">
-                  <Button
-                    size="small"
-                    className="select-unselect-all-btn"
-                    type="button"
-                    onClick={() => {
-                      if (
-                        intervalsIncluded === "none" ||
-                        intervalsIncluded === "some"
-                      ) {
-                        setIntervals({
-                          Unison: true,
-                          min2: true,
-                          Maj2: true,
-                          min3: true,
-                          Maj3: true,
-                          P4: true,
-                          Tritone: true,
-                          P5: true,
-                          min6: true,
-                          Maj6: true,
-                          min7: true,
-                          Maj7: true,
-                          Octave: true,
-                        });
-                        setIntervalsIncluded("all");
-                      } else {
-                        setIntervals({
-                          Unison: false,
-                          min2: false,
-                          Maj2: false,
-                          min3: false,
-                          Maj3: false,
-                          P4: false,
-                          Tritone: false,
-                          P5: false,
-                          min6: false,
-                          Maj6: false,
-                          min7: false,
-                          Maj7: false,
-                          Octave: false,
-                        });
-                        setIntervalsIncluded("none");
-                      }
-                    }}
-                  >
-                    {intervalsIncluded === "all" ? "Unselect" : "Select"} All
-                  </Button>
-                </div>
-              </div>
-            </fieldset>
-            <fieldset className="directions-included-section">
-              <legend>Directions To Include</legend>
-              <div className="notification-container">
-                <EmptyInputsErrorNotification
-                  errorObj={intervalOptionsError}
-                  setErrorObj={setIntervalOptionsError}
-                  specificError="noDirectionsIncluded"
-                />
-              </div>
-              <div className="row user-select-inputs">
-                {Object.keys(availableDirections).map((direction) => {
-                  return (
-                    <ToggleDirectionCheckbox
-                      key={direction}
-                      directionName={direction}
-                      setDirections={setDirections}
-                    />
-                  );
-                })}
-              </div>
-            </fieldset>
-          </div>
+            </div>
+          </fieldset>
+          <fieldset className="directions-included-section">
+            <legend>Directions To Include</legend>
+            <div className="notification-container">
+              <EmptyInputsErrorNotification
+                errorObj={intervalOptionsError}
+                setErrorObj={setIntervalOptionsError}
+                specificError="noDirectionsIncluded"
+              />
+            </div>
+            <div className="row user-select-inputs">
+              {Object.keys(availableDirections).map((direction) => {
+                return (
+                  <ToggleDirectionCheckbox
+                    key={direction}
+                    directionName={direction}
+                    setDirections={setDirections}
+                  />
+                );
+              })}
+            </div>
+          </fieldset>
+        </div>
 
-          <Button className="apply-changes-btn">Apply Changes</Button>
-        </form>
-      </div>
-    </section>
+        <Button className="apply-changes-btn">Apply Changes</Button>
+      </form>
+      {/* </div> */}
+    </dialog>
   );
 };
 

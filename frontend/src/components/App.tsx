@@ -16,36 +16,38 @@ const App = () => {
   const [answerIncorrect, setAnswerIncorrect] = useState(false);
 
   return (
-    <main className="main-container">
-      <StackLayout className="col">
-        <GradientHeader
-          settingsOpen={settingsOpen}
-          headerText={"Interval Trainer"}
-        />
-        <UserStatsContextProvider>
-          <StackLayout className="dashboard-player-and-user-selections-container col">
-            <StatsDashboard
-              answerShown={answerShown}
-              setAnswerShown={setAnswerShown}
-              answerCorrect={answerCorrect}
-              answerIncorrect={answerIncorrect}
-            />
-            <IntervalPlayer />
-            <IntervalSelection
-              answerShown={answerShown}
-              setAnswerCorrect={setAnswerCorrect}
-              setAnswerIncorrect={setAnswerIncorrect}
-            />
-          </StackLayout>
-        </UserStatsContextProvider>
-        <ControlPanel
-          settingsOpen={settingsOpen}
-          setSettingsOpen={setSettingsOpen}
-          setAnswerShown={setAnswerShown}
-        />
-        <IntervalOptions settingsOpen={settingsOpen} />
-      </StackLayout>
-    </main>
+    <>
+      <main className="main-container">
+        <StackLayout className="col">
+          <GradientHeader
+            settingsOpen={settingsOpen}
+            headerText={"Interval Trainer"}
+          />
+          <UserStatsContextProvider>
+            <StackLayout className="dashboard-player-and-user-selections-container col">
+              <StatsDashboard
+                answerShown={answerShown}
+                setAnswerShown={setAnswerShown}
+                answerCorrect={answerCorrect}
+                answerIncorrect={answerIncorrect}
+              />
+              <IntervalPlayer />
+              <IntervalSelection
+                answerShown={answerShown}
+                setAnswerCorrect={setAnswerCorrect}
+                setAnswerIncorrect={setAnswerIncorrect}
+              />
+            </StackLayout>
+          </UserStatsContextProvider>
+          <ControlPanel
+            settingsOpen={settingsOpen}
+            setSettingsOpen={setSettingsOpen}
+            setAnswerShown={setAnswerShown}
+          />
+        </StackLayout>
+      </main>
+      {settingsOpen && <IntervalOptions />}
+    </>
   );
 };
 

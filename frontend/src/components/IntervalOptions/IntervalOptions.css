@@ -1,16 +1,28 @@
-.customize-intervals-section {
+/* .customize-intervals-section {
   width: 100%;
 }
 
 .main-container.collapsable-options-container {
+  animation: 500ms 1 alternate slide-open;
   position: absolute;
   padding-bottom: 70px;
-  transform: scaleY(0);
-  transition: all 250ms ease-in;
+  transition: transform 5000ms ease-in;
+} */
+.customize-intervals-section.main-container.collapsable-options-container {
+  animation: 500ms 1 alternate slide-open;
+  position: absolute;
+  padding-bottom: 70px;
+  transition: transform 5000ms ease-in;
+  width: 100%;
 }
 
-.collapsable-options-container.open {
-  transform: scaleY(100%);
+@keyframes slide-open {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(100%);
+  }
 }
 
 .intervals-and-directions-container {
