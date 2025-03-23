@@ -148,8 +148,8 @@ const IntervalSelection = ({
   };
 
   return (
-    <section className="user-selection-section">
-      <form onSubmit={handleSubmit}>
+    <section className="interval-selection-section">
+      <form className="interval-selection-form col" onSubmit={handleSubmit}>
         <fieldset>
           <div className="notification-container">
             <EmptyInputsErrorNotification

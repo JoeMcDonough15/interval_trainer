@@ -17,8 +17,12 @@ const App = () => {
 
   return (
     <>
-      <main className={`main-container ${settingsOpen ? "settings-open" : ""}`}>
-        <StackLayout className="col">
+      <main className="main-container">
+        <StackLayout
+          className={`user-interface col ${
+            settingsOpen ? "settings-open" : ""
+          }`}
+        >
           <GradientHeader
             settingsOpen={settingsOpen}
             headerText={"Interval Trainer"}

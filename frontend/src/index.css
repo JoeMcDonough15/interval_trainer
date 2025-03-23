@@ -99,7 +99,11 @@ legend {
   width: 90%;
 }
 
-.main-container.settings-open {
+.user-interface.col {
+  margin-bottom: 24px;
+}
+
+.user-interface.col.settings-open {
   filter: opacity(0.03);
 }
 
@@ -113,12 +117,10 @@ legend {
   width: 100vw;
 }
 
-.k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col {
+.dashboard-player-and-user-selections-container.col,
+.user-interface.col {
+  gap: 40px;
   width: 100%;
-}
-
-.k-stack-layout.k-hstack.k-justify-content-stretch.k-align-items-stretch.col.dashboard-player-and-user-selections-container {
-  gap: 25px;
 }
 
 .k-card.dashboard-card.k-card-vertical.row {
@@ -145,7 +147,7 @@ legend {
   max-width: 90px;
 }
 
-.user-selection-section
+.interval-selection-section
   .user-select-inputs.row
   .k-label.row.centered-spaced-row,
 .intervals-included-section

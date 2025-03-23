@@ -1,14 +1,15 @@
 .settings-content {
   background-color: black;
   bottom: 50%;
-  height: 90vh;
+  height: 90%;
   margin: auto;
-  max-width: 600px;
+  max-height: 900px;
+  max-width: 650px;
   overflow: scroll;
   padding: 70px 2px;
   position: fixed;
   top: 50%;
-  width: 90vw;
+  width: 90%;
 }
 
 .settings-close-button {

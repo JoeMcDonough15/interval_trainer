@@ -1,19 +1,19 @@
-.user-selection-section {
+.interval-selection-section {
   position: relative;
+}
+
+.interval-selection-form {
+  gap: 20px;
 }
 
 .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
   background-color: var(--my-primary-color);
   border-color: var(--my-primary-color);
-  bottom: -22% !important;
   color: var(--my-dark-color);
   font-size: inherit;
-  left: 30% !important;
   outline: var(--my-primary-color);
   padding: 1em 25%;
-  position: absolute;
-  right: 30% !important;
-  max-height: 50px;
+  position: static;
   max-width: 250px;
 }
 
@@ -31,10 +31,4 @@
   border-color: var(--my-primary-color);
   box-shadow: 0 0 2px 2px var(--my-primary-color);
   color: var(--my-dark-color);
-}
-
-@media screen and (min-width: 640px) {
-  .k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button {
-    bottom: -30% !important;
-  }
 }
