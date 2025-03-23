@@ -26,9 +26,10 @@
   color: #444;
 }
 
-.k-radio.k-radio-md:checked {
+.user-select-radio-option.k-radio.k-radio-md:checked {
   background-color: var(--my-primary-color);
   border-color: var(--my-primary-color);
+  box-shadow: 0 0 2px 2px var(--my-primary-color);
   color: var(--my-dark-color);
 }
 

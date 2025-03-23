@@ -49,13 +49,17 @@ const IntervalSelection = ({
     setFiveInARow,
   } = useContext(UserStatsContext);
 
+  const [userSubmission, setUserSubmission] = useState("");
+  const [userSubmissionError, setUserSubmissionError] = useState(
+    {} as EmptyInputsErrorType
+  );
+
   // We also need a useEffect hook in this component because if the availableIntervals or availableDirections
   // ever change, we want to reselect a new random interval guaranteed to be in the availableIntervals and
   // availableDirections.  Since useEffect runs on a component's initial render, we can use this hook to
-  // handle all interval selection for quizzing the user.  Anytime a user submits an answer to an interval played,
-  // the totalNumberAnswered should update which would trigger a rerender of this component (since this component will be
-  // using the totalNumberAnsweredContext).  After that render, the useEffect hook would run because totalNumberAnswered
-  // goes in its dependency array.  So every time a user submits an answer, a new interval will be randomly selected.
+  // handle the initial interval selection for quizzing the user.  Anytime a user submits a correct answer to an interval played,
+  // the numCorrect should update which would trigger a rerender of this component (since this component will be
+  // using numCorrect in its dependency array). So every time a user submits a correct answer, a new interval will be randomly selected.
 
   useEffect(() => {
     // if the answer is currently shown, wait until user closes that notification to select a new interval.
@@ -79,12 +83,14 @@ const IntervalSelection = ({
 
     setIntervalName(validIntervals[validIntervalIndex]);
     setIntervalDirection(validDirections[validDirectionsIndex]);
-  }, [availableIntervals, availableDirections, numCorrect, answerShown]);
-
-  const [userSubmission, setUserSubmission] = useState("");
-  const [userSubmissionError, setUserSubmissionError] = useState(
-    {} as EmptyInputsErrorType
-  );
+    setUserSubmission("");
+  }, [
+    availableIntervals,
+    availableDirections,
+    numCorrect,
+    answerShown,
+    setUserSubmission,
+  ]);
 
   const handleError = () => {
     const errors: EmptyInputsErrorType = {};
@@ -134,6 +140,7 @@ const IntervalSelection = ({
       }, 2000);
       // reset consecutiveCorrect to 0 because we broke the correct streak
       setConsecutiveCorrect(0);
+      setUserSubmission(""); // set useSubmission back to an empty string so they can try again with their incorrect guess deselected from the radios
     }
 
     // then, user's right or wrong, increment totalNumAnswered, triggering useEffect to select a new interval
@@ -159,6 +166,7 @@ const IntervalSelection = ({
                   key={interval}
                   intervalName={interval}
                   setUserSubmission={setUserSubmission}
+                  userSubmission={userSubmission}
                   answerShown={answerShown}
                 />
               );

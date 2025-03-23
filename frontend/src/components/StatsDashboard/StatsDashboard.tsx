@@ -99,7 +99,7 @@ const StatsDashboard = ({
             <Fade>
               {answerIncorrect && (
                 <Notification className="user-feedback-notification incorrect-notification row">
-                  <span>Incorrect</span>
+                  <span>Incorrect. Try again!</span>
                 </Notification>
               )}
             </Fade>
