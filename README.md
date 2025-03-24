@@ -1,8 +1,8 @@
 # Musical Ear - An Interval Trainer
 
-This simple interval trainer was created for the DEV Community Kendo React challenge.
+This simple interval trainer was created for the DEV Community KendoReact challenge. It helps musicians of any level improve their ear training by practicing interval recognition.
 
-## The Kendo React free components that I used
+## The KendoReact free components that I used
 
 1. StackLayout
 2. Checkbox
@@ -18,7 +18,7 @@ This simple interval trainer was created for the DEV Community Kendo React chall
 12. Card
 13. SvgIcon
 
-I will continue using Kendo React's free components in future projects. Thank you Kendo React!
+I will continue using KendoReact's free components in future projects. Thank you KendoReact!
 
 ## Workflow
 
