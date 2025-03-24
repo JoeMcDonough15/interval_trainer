@@ -11,15 +11,23 @@
   border-color: var(--my-primary-color);
   color: var(--my-dark-color);
   font-size: inherit;
+  max-width: 250px;
+  opacity: 0.85;
   outline: var(--my-primary-color);
   padding: 1em 25%;
   position: static;
-  max-width: 250px;
+  transition: opacity 250ms ease-in;
 }
 
 .k-disabled.k-fab-solid-primary.user-selection.button,
 .k-fab-solid-primary.user-selection-button:disabled {
   opacity: 0.2;
+}
+
+.k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button:hover,
+.k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button:focus,
+.k-fab.k-fab-solid.k-fab-md.k-pos-fixed.k-rounded-full.k-fab-solid-primary.k-bottom-end.user-selection-button:focus-visible {
+  opacity: 1;
 }
 
 .disabled-input {

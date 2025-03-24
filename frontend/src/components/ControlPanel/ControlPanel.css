@@ -2,3 +2,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.control-panel-button.transparent-btn {
+  transition: all 250ms ease-in;
+}
+
+.control-panel-button.transparent-btn:hover,
+.control-panel-button.transparent-btn:focus,
+.control-panel-button.transparent-btn:focus-visible {
+  background-color: #fff;
+  border-color: var(--my-dark-color);
+  color: var(--my-dark-color);
+}

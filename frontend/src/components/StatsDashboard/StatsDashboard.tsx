@@ -105,7 +105,7 @@ const StatsDashboard = ({
         )}
         <NotificationGroup className="user-answer-notifications">
           <div className="notification-container">
-            <Fade>
+            <Fade transitionEnterDuration={500}>
               {answerCorrect && (
                 <Notification className="user-feedback-notification correct-notification row">
                   <span>Correct!</span>
@@ -114,7 +114,7 @@ const StatsDashboard = ({
             </Fade>
           </div>
           <div className="notification-container">
-            <Fade>
+            <Fade transitionEnterDuration={500}>
               {answerIncorrect && (
                 <Notification className="user-feedback-notification incorrect-notification row">
                   <span>Incorrect. Try again!</span>
@@ -123,7 +123,7 @@ const StatsDashboard = ({
             </Fade>
           </div>
           <div className="notification-container">
-            <Fade>
+            <Fade transitionEnterDuration={500}>
               {fiveInARow && (
                 <Notification className="user-feedback-notification five-in-a-row-notification row">
                   <span>⭐️ Way to go! 5 in a row! ⭐️</span>
@@ -133,7 +133,11 @@ const StatsDashboard = ({
           </div>
         </NotificationGroup>
         <div className="notification-container show-answer-notification-container user-answer-notifications">
-          <Push className="animation-container-for-show-answer">
+          <Push
+            transitionEnterDuration={500}
+            transitionExitDuration={500}
+            className="animation-container-for-show-answer"
+          >
             {answerShown && (
               <Notification
                 className="show-answer-notification"
@@ -145,7 +149,7 @@ const StatsDashboard = ({
             )}
           </Push>
           <div className="notification-container">
-            <Slide>
+            <Slide transitionEnterDuration={500} transitionExitDuration={500}>
               {changesApplied && (
                 <Notification type={{ style: "success" }}>
                   <span>Changes applied</span>

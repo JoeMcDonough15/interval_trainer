@@ -19,7 +19,6 @@
 
 .customize-intervals-section.main-container {
   animation: 500ms 1 alternate slide-open;
-  transition: transform 5000ms ease-in;
 }
 
 .header-and-close.row {

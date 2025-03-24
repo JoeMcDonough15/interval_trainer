@@ -16,7 +16,13 @@ const EmptyInputsErrorNotification = ({
   direction,
 }: Props) => {
   return (
-    <Slide enter={true} exit={true} direction={direction ? direction : "down"}>
+    <Slide
+      enter={true}
+      exit={true}
+      direction={direction ? direction : "down"}
+      transitionEnterDuration={500}
+      transitionExitDuration={500}
+    >
       {errorObj[specificError as keyof EmptyInputsErrorType] && (
         <Notification
           type={{ style: "error" }}
