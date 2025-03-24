@@ -4,11 +4,16 @@ import { Dispatch, SetStateAction } from "react";
 import { DirectionsInterface } from "../../types";
 
 interface Props {
+  directions: DirectionsInterface;
   setDirections: Dispatch<SetStateAction<DirectionsInterface>>;
   directionName: string;
 }
 
-const ToggleDirectionCheckbox = ({ setDirections, directionName }: Props) => {
+const ToggleDirectionCheckbox = ({
+  directions,
+  setDirections,
+  directionName,
+}: Props) => {
   const handleChange = (e: CheckboxChangeEvent) => {
     if (e.target.value) {
       setDirections((prevDirections) => {
@@ -28,7 +33,11 @@ const ToggleDirectionCheckbox = ({ setDirections, directionName }: Props) => {
     <Label className="row centered-spaced-row">
       {" "}
       {directionName}
-      <Checkbox onChange={handleChange} defaultChecked={true} />
+      <Checkbox
+        onChange={handleChange}
+        value={directionName}
+        checked={directions[directionName as keyof DirectionsInterface]}
+      />
     </Label>
   );
 };

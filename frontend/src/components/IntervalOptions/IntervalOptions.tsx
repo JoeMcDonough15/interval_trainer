@@ -190,6 +190,7 @@ const IntervalOptions = ({ setSettingsOpen }: Props) => {
                         key={direction}
                         directionName={direction}
                         setDirections={setDirections}
+                        directions={directions}
                       />
                     );
                   })}
